@@ -1,0 +1,3506 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <link rel="icon" type="image/png" href="assets/logo/icon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="assets/logo/icon/favicon.svg">
+    <link rel="shortcut icon" href="assets/logo/icon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/logo/icon/apple-touch-icon.png">
+    <link rel="manifest" href="assets/logo/icon/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>قوانین و مقررات</title>
+    <style>
+        /* ========== تعریف فونت فر دینار ========== */
+        @font-face {
+            font-family: 'Far Dinar Two';
+            src: url("assets/fonts/Bidad Medium.otf") format('truetype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Far Dinar Two', system-ui, -apple-system, 'Segoe UI', 'Tahoma', sans-serif;
+            background: #FFFFFF;
+            color: #111111;
+            padding-bottom: 85px;
+            line-height: 1.5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ========== هدر اصلی — دو جزیره‌ی شیشه‌ای ========== */
+        .main-header {
+            background: transparent;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 101;
+            width: 100%;
+            transition: transform 0.35s ease;
+        }
+
+        .main-header.header-hidden {
+            transform: translateY(-140%);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        /* استایل مشترک جزیره‌های شیشه‌ای هدر (هم‌راستا با استایل منوی پایین) */
+        .header-island {
+            background: rgba(255,255,255,0.62);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.7);
+            box-shadow: 0 6px 24px rgba(17,17,17,0.07);
+            border-radius: 999px;
+        }
+
+        /* لوگو و برند */
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 6px 22px 6px 10px;
+            flex-shrink: 0;
+        }
+
+        .brand-logo {
+            height: 60px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.02);
+        }
+
+        .brand-name {
+            font-size: 26px;
+            font-weight: 700;
+            color: #111111;
+            letter-spacing: -0.5px;
+            font-family: 'Far Dinar Two', system-ui, sans-serif;
+        }
+
+        .brand-name span {
+            color: #B88A44;
+        }
+
+        /* دکمه جستجوی موبایل */
+        .mobile-search-toggle {
+            display: none;
+            background: rgba(255,255,255,0.62);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.7);
+            box-shadow: 0 6px 24px rgba(17,17,17,0.07);
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            align-items: center;
+            justify-content: center;
+            color: #111111;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .mobile-search-toggle:hover {
+            background: rgba(255,255,255,0.75);
+        }
+
+        /* جستجو — جزیره‌ی دوم */
+        .search-form {
+            flex: 1;
+            max-width: 420px;
+            transition: all 0.3s ease;
+            padding: 4px;
+        }
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-wrapper input {
+            width: 100%;
+            padding: 12px 50px 12px 20px;
+            border: none;
+            border-radius: 100px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: transparent;
+            color: #111111;
+            font-family: 'Far Dinar Two', system-ui, sans-serif;
+        }
+
+        .search-wrapper input:focus {
+            outline: none;
+        }
+
+        .search-wrapper input::placeholder {
+            color: rgba(17,17,17,0.6);
+            font-size: 14px;
+            font-family: 'Far Dinar Two', system-ui, sans-serif;
+        }
+
+        .search-wrapper button {
+            position: absolute;
+            left: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(92,70,51,0.1);
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #5C4633;
+            font-size: 18px;
+        }
+
+        .search-wrapper button:hover {
+            background: rgba(92,70,51,0.18);
+        }
+
+        /* دکمه بستن جستجو در موبایل */
+        .close-search-btn {
+            display: none;
+            background: rgba(255,255,255,0.62);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.7);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            color: rgba(17,17,17,0.22);
+            font-size: 24px;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .close-search-btn:hover {
+            background: rgba(255,255,255,0.8);
+            color: #111111;
+        }
+
+        /* ========== هدر ثابت پایین (منو) ========== */
+        .bottom-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            background: rgba(255,255,255,0.62);
+            border-radius: 40px;
+            box-shadow: 0 8px 28px rgba(17,17,17,0.1);
+            padding: 10px 20px;
+            z-index: 1000;
+            border: 1px solid rgba(255,255,255,0.7);
+            backdrop-filter: blur(22px) saturate(180%);
+            -webkit-backdrop-filter: blur(22px) saturate(180%);
+        }
+
+        .nav-items {
+            position: relative;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        /* دایره‌ی متحرک شکلاتی زیر تب فعال */
+        .nav-indicator {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            background: linear-gradient(160deg, #B88A44 0%, #5C4633 60%, #5C4633 100%);
+            box-shadow: 0 4px 16px rgba(92,70,51,0.4);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: left 0.45s cubic-bezier(0.22, 1, 0.36, 1), top 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                        width 0.45s cubic-bezier(0.22, 1, 0.36, 1), height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                        opacity 0.25s ease;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .nav-item {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            text-decoration: none;
+            color: #111111;
+            transition: color 0.25s ease;
+            border-radius: 30px;
+            padding: 6px 12px;
+        }
+
+        .nav-item svg {
+            width: 22px;
+            height: 22px;
+            stroke: #111111;
+            stroke-width: 1.5;
+            fill: none;
+            transition: stroke 0.25s ease;
+        }
+
+        .nav-item.active svg {
+            stroke: #FFFFFF;
+            fill: none;
+        }
+
+        .nav-item.active .nav-label {
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+
+        .nav-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #111111;
+            font-family: 'Far Dinar Two', system-ui, sans-serif;
+            transition: color 0.25s ease;
+        }
+
+        /* ========== فوتر ========== */
+        .footer {
+            background: #FFFFFF;
+            border-top: 1px solid rgba(17,17,17,0.1);
+            padding: 40px 20px 30px;
+            margin-top: 60px;
+        }
+
+        .faq-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .faq-card {
+            border: 1px solid rgba(17,17,17,0.1);
+            border-radius: 20px;
+            padding: 14px 20px;
+            background: #FFFFFF;
+            font-size: 14px;
+            color: #111111;
+            text-decoration: none;
+            transition: all 0.2s;
+            font-family: 'Far Dinar Two', system-ui, sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .faq-card svg {
+            stroke: #5C4633;
+            flex-shrink: 0;
+        }
+
+        .faq-card:hover {
+            border-color: #5C4633;
+            background: rgba(184,138,68,0.14);
+        }
+
+        .footer-divider {
+            border: none;
+            border-top: 1px solid rgba(17,17,17,0.1);
+            margin: 24px 0;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #111111;
+            font-size: 14px;
+            font-family: 'Far Dinar Two', system-ui, sans-serif;
+        }
+
+        .footer-links a:hover {
+            color: #5C4633;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 24px;
+            font-size: 13px;
+            color: rgba(17,17,17,0.6);
+            font-family: 'Far Dinar Two', system-ui, sans-serif;
+        }
+
+        .footer-bottom span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-bottom svg {
+            stroke: rgba(17,17,17,0.6);
+            flex-shrink: 0;
+        }
+
+        /* پیام‌ها */
+        .messages {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .alert {
+            padding: 12px 18px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            font-family: 'Far Dinar Two', system-ui, sans-serif;
+        }
+        .alert-success {
+            background: rgba(47,158,104,0.12);
+            color: #2F9E68;
+            border: 1px solid #2F9E68;
+        }
+        .alert-error {
+            background: rgba(178,58,74,0.1);
+            color: #B23A4A;
+            border: 1px solid rgba(178,58,74,0.1);
+        }
+        .alert-warning {
+            background: rgba(184,138,68,0.14);
+            color: #B88A44;
+        }
+        .alert-info {
+            background: rgba(139,111,71,0.1);
+            color: #8B6F47;
+        }
+
+        /* استایل عمومی برای همه متن‌ها */
+        h1, h2, h3, h4, h5, h6, p, a, button, input, textarea, select, span, div {
+            font-family: 'Far Dinar Two', system-ui, sans-serif;
+        }
+
+        /* ========== ریسپانسیو - موبایل ========== */
+        @media (max-width: 767px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .main-header {
+                padding: 10px 0;
+            }
+            
+            .header-content {
+                gap: 12px;
+                position: relative;
+            }
+            
+            .brand-wrapper {
+                gap: 6px;
+                padding: 5px 16px 5px 8px;
+            }
+            
+            .brand-logo {
+                height: 30px;
+            }
+            
+            .brand-name {
+                font-size: 15px;
+            }
+            
+            /* دکمه جستجو در موبایل */
+            .mobile-search-toggle {
+                display: flex;
+                width: 35px;
+                height: 35px;
+                font-size: 15px;
+            }
+            
+            /* کادر جستجو در موبایل */
+            .search-form {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                max-width: 100%;
+                background: rgba(255,255,255,0.7);
+                backdrop-filter: blur(18px) saturate(180%);
+                -webkit-backdrop-filter: blur(18px) saturate(180%);
+                border: 1px solid rgba(255,255,255,0.7);
+                border-radius: 999px;
+                box-shadow: 0 6px 24px rgba(17,17,17,0.08);
+                z-index: 10;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                padding: 2px;
+            }
+            
+            .search-form.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            /* مخفی کردن لوگو وقتی جستجو بازه */
+            .brand-wrapper {
+                opacity: 1;
+                visibility: visible;
+                transition: all 0.3s ease;
+            }
+            
+            .brand-wrapper.hidden {
+                opacity: 0;
+                visibility: hidden;
+                position: absolute;
+            }
+            
+            /* دکمه بستن */
+            .close-search-btn {
+                display: none;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            .close-search-btn.active {
+                display: flex;
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            /* مخفی کردن دکمه جستجو وقتی کادر بازه */
+            .mobile-search-toggle.hidden {
+                display: none;
+            }
+            
+            .search-wrapper input {
+                padding: 10px 45px 10px 16px;
+                font-size: 14px;
+            }
+            
+            .search-wrapper button {
+                width: 40px;
+                height: 40px;
+                left: 4px;
+            }
+            
+            .search-wrapper button svg {
+                width: 18px;
+                height: 18px;
+            }
+            
+            .bottom-nav {
+                width: calc(100% - 24px);
+                padding: 6px 12px;
+                bottom: 12px;
+                border-radius: 30px;
+            }
+            
+            .nav-item {
+                padding: 4px 8px;
+                gap: 3px;
+            }
+            
+            .nav-item svg {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .nav-label {
+                font-size: 10px;
+            }
+            
+            body {
+                padding-bottom: 75px;
+            }
+            
+            .footer {
+                padding: 30px 16px 20px;
+                margin-top: 40px;
+            }
+            
+            .faq-grid {
+                gap: 10px;
+            }
+            
+            .faq-card {
+                padding: 10px 14px;
+                font-size: 12px;
+            }
+            
+            .footer-links {
+                gap: 16px;
+            }
+            
+            .footer-links a {
+                font-size: 13px;
+            }
+            
+            .footer-bottom {
+                justify-content: center;
+                text-align: center;
+                font-size: 12px;
+            }
+        }
+
+        /* ========== تبلت ========== */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .brand-logo {
+                height: 55px;
+            }
+            
+            .brand-name {
+                font-size: 26px;
+            }
+            
+            .bottom-nav {
+                max-width: 550px;
+                padding: 9px 20px;
+            }
+            
+            .nav-item svg {
+                width: 22px;
+                height: 22px;
+            }
+            
+            .nav-label {
+                font-size: 11px;
+            }
+        }
+
+        /* ========== لپ‌تاپ و دسکتاپ ========== */
+        @media (min-width: 1024px) {
+            .brand-logo {
+                height: 65px;
+            }
+            
+            .brand-name {
+                font-size: 30px;
+            }
+            
+            .bottom-nav {
+                max-width: 650px;
+                padding: 10px 28px;
+                border-radius: 50px;
+            }
+            
+            .nav-items {
+                gap: 10px;
+            }
+            
+            .nav-item {
+                padding: 8px 16px;
+            }
+            
+            .nav-item svg {
+                width: 27px;
+                height: 27px;
+            }
+            
+            .nav-label {
+                font-size: 15px;
+                font-weight: 700;
+            }
+            
+            .nav-item:hover {
+                background: rgba(17,17,17,0.03);
+            }
+            
+            .nav-item:hover svg {
+                stroke: #111111;
+            }
+        }
+        
+        /* ========== نوار اعلان بالای سایت ========== */
+        .announcement-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 102;
+            width: 100%;
+        }
+
+        .announcement-bar {
+            display: block;
+            text-align: center;
+            padding: 8px 20px;
+            font-size: 13px;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .announcement-bar:hover {
+            opacity: 0.9;
+        }
+        
+        /* تنظیم z-index هدر */
+        .main-header {
+            z-index: 100;
+        }
+
+        /* در موبایل */
+        @media (max-width: 767px) {
+            .announcement-bar {
+                padding: 6px 16px;
+                font-size: 11px;
+            }
+        }
+        
+        /* ✅ فقط وقتی اعلان وجود داره، هدر بیاد پایین‌تر */
+        body:has(.announcement-wrapper) .main-header {
+            top: auto;
+        }
+
+        /* ✅ راه حل بهتر: هدر sticky بمونه ولی درست زیر اعلان */
+        .announcement-wrapper:not(:empty) ~ .main-header,
+        body:has(.announcement-wrapper) .main-header {
+            position: sticky;
+            top: 0;
+        }
+        
+        /* استایل اسلایدر نظرات */
+        .testimonials-section {
+            margin: 60px 0 40px;
+            padding: 0 20px;
+        }
+        
+        .testimonials-header {
+            position: relative;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .testimonials-title {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .testimonials-title svg {
+            stroke: #5C4633;
+        }
+        
+        .testimonials-subtitle {
+            color: rgba(17,17,17,0.6);
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        
+        .testimonials-slider-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonials-slider {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials-track {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: calc(33.333% - 14px);
+            gap: 20px;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .testimonial-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid rgba(17,17,17,0.1);
+            box-shadow: 0 2px 8px rgba(17,17,17,0.06);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
+        }
+        
+        .testimonial-card:hover {
+            box-shadow: 0 8px 25px rgba(17,17,17,0.1);
+            transform: translateY(-4px);
+        }
+        
+        .testimonial-content {
+            flex: 1;
+        }
+        
+        .testimonial-stars {
+            color: #B88A44;
+            font-size: 16px;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+        
+        .testimonial-text {
+            color: rgba(17,17,17,0.85);
+            line-height: 1.7;
+            font-size: 14px;
+            font-family: 'Far Dinar Two', system-ui, sans-serif;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+        
+        .testimonial-footer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(17,17,17,0.1);
+        }
+        
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #5C4633, #B88A44);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 600;
+            flex-shrink: 0;
+            font-family: 'Far Dinar Two', system-ui, sans-serif;
+            overflow: hidden;
+        }
+        
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .testimonial-user-info {
+            flex: 1;
+        }
+        
+        .testimonial-username {
+            font-weight: 600;
+            color: #111111;
+            font-size: 14px;
+            font-family: 'Far Dinar Two', system-ui, sans-serif;
+            margin-bottom: 2px;
+        }
+        
+        .testimonial-product {
+            font-size: 12px;
+            color: #5C4633;
+            font-family: 'Far Dinar Two', system-ui, sans-serif;
+        }
+        
+        .testimonial-product a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .testimonial-product a:hover {
+            text-decoration: underline;
+        }
+        
+        .testimonial-date {
+            font-size: 11px;
+            color: rgba(17,17,17,0.22);
+        }
+        
+        /* دکمه‌های اسلایدر */
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: 1px solid rgba(17,17,17,0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(17,17,17,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            color: #5C4633;
+        }
+        
+        .slider-nav:hover {
+            background: #B88A44;
+            color: white;
+            border-color: #B88A44;
+        }
+        
+        .slider-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .slider-nav.prev {
+            right: -20px;
+        }
+        
+        .slider-nav.next {
+            left: -20px;
+        }
+        
+        /* انیمیشن فلش برای کارت‌های نظر */
+        @keyframes testimonialSlide3D {
+            0% {
+                transform: translateX(0) rotateY(0deg) scale(1);
+                opacity: 1;
+            }
+            30% {
+                transform: translateX(-15px) rotateY(-8deg) scale(0.94);
+                opacity: 0.75;
+            }
+            70% {
+                transform: translateX(15px) rotateY(8deg) scale(0.94);
+                opacity: 0.75;
+            }
+            100% {
+                transform: translateX(0) rotateY(0deg) scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .testimonials-track.sliding .testimonial-card {
+            animation: testimonialSlide3D 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* ریسپانسیو */
+        @media (max-width: 768px) {
+            .testimonials-section {
+                margin: 40px 0 30px;
+            }
+            
+            .testimonials-title {
+                font-size: 22px;
+            }
+            
+            .testimonials-slider {
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                scroll-snap-type: x mandatory;
+            }
+            
+            .testimonials-slider::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .testimonials-track {
+                grid-auto-columns: 82%;
+                gap: 14px;
+                transition: none;
+            }
+            
+            .testimonial-card {
+                scroll-snap-align: center;
+                min-height: 180px;
+                padding: 18px;
+            }
+            
+            .slider-nav {
+                display: none;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .testimonials-track {
+                grid-auto-columns: calc(50% - 10px);
+            }
+        }
+    </style>
+    
+<style>
+    .page-header-simple {
+        margin: 40px 0 30px;
+        text-align: right;
+        border-bottom: 1px solid rgba(17,17,17,0.1);
+        padding-bottom: 20px;
+    }
+
+    .page-header-simple h1 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #111111;
+        margin-bottom: 8px;
+    }
+
+    .page-header-simple p {
+        color: rgba(17,17,17,0.6);
+        font-size: 16px;
+    }
+
+    .terms-container {
+        max-width: 900px;
+        margin: 0 auto 60px;
+        padding: 0 20px;
+    }
+
+    .terms-card {
+        background: white;
+        border-radius: 28px;
+        padding: 40px;
+        border: 1px solid rgba(17,17,17,0.1);
+        box-shadow: 0 4px 15px rgba(17,17,17,0.03);
+    }
+
+    .terms-section {
+        margin-bottom: 40px;
+    }
+
+    .terms-section:last-child {
+        margin-bottom: 0;
+    }
+
+    .section-heading {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1.5px solid rgba(17,17,17,0.1);
+    }
+
+    .section-number {
+        width: 40px;
+        height: 40px;
+        background: rgba(17,17,17,0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #111111;
+        font-weight: 700;
+        font-size: 18px;
+        flex-shrink: 0;
+    }
+
+    .section-heading h2 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #111111;
+        margin: 0;
+        font-family: 'Far Dinar Two', sans-serif;
+    }
+
+    .terms-content {
+        color: rgba(17,17,17,0.85);
+        line-height: 1.9;
+        font-size: 15px;
+        padding-right: 20px;
+        font-family: 'Far Dinar Two', sans-serif;
+    }
+
+    .terms-content p {
+        margin-bottom: 16px;
+    }
+
+    .terms-content ul,
+    .terms-content ol {
+        margin: 16px 0;
+        padding-right: 24px;
+    }
+
+    .terms-content li {
+        margin-bottom: 10px;
+    }
+
+    .terms-content strong {
+        color: #111111;
+        font-weight: 700;
+    }
+
+    .highlight-box {
+        background: rgba(184,138,68,0.14);
+        padding: 20px 24px;
+        border-radius: 16px;
+        border-right: 4px solid #5C4633;
+        margin: 24px 0;
+    }
+
+    .update-date {
+        text-align: left;
+        color: rgba(17,17,17,0.22);
+        font-size: 14px;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(17,17,17,0.1);
+    }
+
+    .accept-terms {
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .btn-accept {
+        background: #111111;
+        color: white;
+        border: none;
+        padding: 14px 40px;
+        border-radius: 50px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: 'Far Dinar Two', sans-serif;
+    }
+
+    .btn-accept:hover {
+        background: #5C4633;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(92,70,51,0.3);
+    }
+
+    @media (max-width: 768px) {
+        .page-header-simple {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .page-header-simple h1 {
+            font-size: 24px;
+        }
+
+        .terms-card {
+            padding: 24px 20px;
+        }
+
+        .section-heading h2 {
+            font-size: 18px;
+        }
+
+        .terms-content {
+            font-size: 14px;
+            padding-right: 0;
+        }
+    }
+</style>
+
+</head>
+<body>
+
+<!-- نوار اعلان بالای سایت -->
+
+    <!-- هدر اصلی بالای سایت -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <!-- لوگو و نام برند -->
+                <a href="index.html" class="brand-wrapper header-island" id="brandWrapper">
+                    
+                    <img src="assets/logo/icon-black.png" alt="برازنده" class="brand-logo">
+                    
+                    <div class="brand-name">براز<span>نده</span></div>
+                </a>
+                
+                <!-- فرم جستجو -->
+                <form class="search-form header-island" method="get" action="products.html" id="searchForm">
+                    <div class="search-wrapper">
+                        <input type="text" 
+                               name="name" 
+                               placeholder="جستجوی محصول..." 
+                               autocomplete="off" 
+                               value=""
+                               id="searchInput">
+                        <button type="submit" aria-label="جستجو">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- دکمه جستجو برای موبایل -->
+                <button class="mobile-search-toggle" id="mobileSearchToggle" aria-label="جستجو">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+                
+                <!-- دکمه بستن جستجو -->
+                <button class="close-search-btn" id="closeSearchBtn" aria-label="بستن جستجو">✕</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+
+        
+<div class="container">
+    <div class="page-header-simple">
+        <h1>قوانین و مقررات</h1>
+        <p>لطفاً پیش از ثبت هرگونه سفارش، موارد زیر را با دقت مطالعه فرمایید</p>
+    </div>
+
+    <div class="terms-container">
+        <div class="terms-card">
+
+            <!-- بخش ۱ -->
+            <div class="terms-section">
+                <div class="section-heading">
+                    <div class="section-number">۱</div>
+                    <h2>تعاریف و معرفی</h2>
+                </div>
+                <div class="terms-content">
+                    <p><strong>فروشگاه:</strong> برازنده تن، فروشنده تخصصی پوشاک زنانه.</p>
+                    <p><strong>سایت:</strong> تارنمای رسمی برازنده تن.</p>
+                    <p><strong>کاربر/مشتری:</strong> هر شخص حقیقی که با ثبت‌نام در سایت، اقدام به خرید محصولات می‌نماید.</p>
+                    <p><strong>محصول:</strong> کلیه کالاهای عرضه‌شده در سایت، شامل انواع پوشاک زنانه و اکسسوری‌های مرتبط.</p>
+                    <p>فروشگاه برازنده تن در بخش عمده به‌صورت فروش فیزیکی و حضوری و در بخش تک‌فروشی، صرفاً به‌صورت آنلاین و از طریق این وب‌سایت فعالیت می‌نماید.</p>
+                </div>
+            </div>
+
+            <!-- بخش ۲ -->
+            <div class="terms-section">
+                <div class="section-heading">
+                    <div class="section-number">۲</div>
+                    <h2>عضویت و حساب کاربری</h2>
+                </div>
+                <div class="terms-content">
+                    <ol>
+                        <li><strong>شرط عضویت:</strong> ثبت‌نام در سایت و ایجاد حساب کاربری برای انجام خرید الزامی است. کاربر می‌پذیرد که تمام اطلاعات هویتی، آدرس و تماس را به‌صورت دقیق و کامل وارد کند. مسئولیت هرگونه خطا در ثبت اطلاعات بر عهده کاربر است.</li>
+                        <li><strong>سن قانونی:</strong> محدودیت سنی برای خرید وجود ندارد، اما کاربران زیر ۱۸ سال تأیید می‌کنند که با اطلاع و نظارت ولی قانونی خود اقدام به خرید می‌کنند.</li>
+                        <li><strong>مسئولیت امنیت حساب:</strong> حفظ محرمانگی نام کاربری و رمز عبور کاملاً بر عهده کاربر است. کلیه فعالیت‌هایی که از طریق حساب کاربری انجام شود، به‌منزله عملکرد صاحب حساب تلقی شده و فروشگاه هیچ‌گونه مسئولیتی در قبال استفاده غیرمجاز از حساب ندارد.</li>
+                        <li><strong>اختیار تعلیق حساب:</strong> برازنده تن این حق را برای خود محفوظ می‌دارد که در صورت تخلف کاربر (از جمله ثبت سفارش‌های صوری، سوءاستفاده از کدهای تخفیف، نقض مکرر شرایط مرجوعی یا رفتار نامناسب با تیم پشتیبانی)، حساب کاربر را به‌طور موقت یا دائم مسدود نماید.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- بخش ۳ -->
+            <div class="terms-section">
+                <div class="section-heading">
+                    <div class="section-number">۳</div>
+                    <h2>اطلاعات محصولات</h2>
+                </div>
+                <div class="terms-content">
+                    <ol>
+                        <li><strong>اصالت و کیفیت:</strong> برازنده تن اصالت و کیفیت بالای تمامی محصولات عرضه‌شده را تضمین می‌کند. عکس‌های محصولات صرفاً جهت معرفی بوده و تمام تلاش بر این است که تصاویر، نزدیک‌ترین بازنمایی به نمونه واقعی باشند.</li>
+                        <li><strong>اختلاف رنگ:</strong> با توجه به تفاوت در تنظیمات نور، رنگ و وضوح نمایشگرهای مختلف، ممکن است رنگ محصول در تصویر تا حدودی با نمونه واقعی مغایرت جزئی داشته باشد. این اختلاف جزئی در رنگ، به‌عنوان عیب، مغایرت کالا یا دلیلی برای مرجوعی تلقی نمی‌گردد. محصول از نظر مدل، جنس و طراحی کاملاً مطابق با مشخصات درج‌شده است.</li>
+                        <li><strong>راهنمای سایز:</strong> انتخاب سایز مناسب بر عهده مشتری است. فروشگاه راهنمای جامع سایز و اندازه‌گیری را در صفحه هر محصول ارائه می‌دهد. اکیداً توصیه می‌شود پیش از ثبت سفارش، راهنمای سایز را به دقت مطالعه فرموده و در صورت نیاز با پشتیبانی مشورت نمایید. مرجوعی ناشی از انتخاب سایز اشتباه، تنها در صورتی که مغایر با راهنمای سایز درج‌شده در سایت باشد، مشمول شرایط مرجوعی خواهد بود.</li>
+                        <li><strong>قیمت‌ها:</strong> کلیه قیمت‌ها به تومان بوده و با احتساب مالیات بر ارزش افزوده و سایر عوارض قانونی درج می‌شوند. قیمت نهایی و قابل پرداخت، همان مبلغی است که در صفحه تسویه حساب نمایش داده می‌شود.</li>
+                        <li><strong>خطای سیستمی در قیمت:</strong> در صورت بروز اشتباه فاحش در درج قیمت یک محصول (نظیر قیمت صفر یا بسیار کمتر از ارزش واقعی) ناشی از خطای سیستمی، برازنده تن این حق را برای خود محفوظ می‌دارد که سفارش ثبت‌شده را حتی پس از پرداخت، به‌صورت یک‌طرفه لغو نموده و وجه دریافتی را بدون هیچ‌گونه کسری به حساب مشتری مسترد نماید. در این صورت، مشتری از طریق راه‌های ارتباطی ثبت‌شده مطلع خواهد شد.</li>
+                        <li><strong>موجودی و رقابت در خرید:</strong> موجودی محصولات به‌روز است. در شرایطی که دو کاربر به‌طور هم‌زمان آخرین موجودی یک کالا را سفارش دهند، اولویت با کاربری است که ثبت سفارش و پرداخت او زودتر در سیستم ثبت شده باشد. در صورت ناموفق بودن یکی از سفارش‌ها، وجه پرداختی ظرف ۷۲ ساعت مسترد خواهد شد.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- بخش ۴ -->
+            <div class="terms-section">
+                <div class="section-heading">
+                    <div class="section-number">۴</div>
+                    <h2>ثبت، پرداخت و لغو سفارش</h2>
+                </div>
+                <div class="terms-content">
+                    <ol>
+                        <li><strong>زمان قطعی شدن سفارش:</strong> سفارش پس از پرداخت موفق و واریز قطعی وجه به حساب فروشگاه، قطعی تلقی می‌گردد. پس از قطعی شدن، پیامک یا ایمیل تأیید برای مشتری ارسال خواهد شد.</li>
+                        <li><strong>عدم قطعیت پرداخت:</strong> در صورت کسر وجه از حساب مشتری اما عدم واریز قطعی به حساب فروشگاه، بانک عامل موظف است حداکثر ظرف ۷۲ ساعت وجه را به حساب مبدأ بازگرداند. فروشگاه در این قبیل موارد تعهدی برای تحویل کالا ندارد.</li>
+                        <li><strong>روش‌های پرداخت:</strong> در حال حاضر، پرداخت آنلاین از طریق کلیه کارت‌های عضو شتاب توسط درگاه امن زرین‌پال انجام می‌شود. فروشگاه متعهد است در آینده روش‌های دیگری از جمله خرید اقساطی اسنپ‌پی را نیز فعال نماید.</li>
+                        <li><strong>امنیت پرداخت:</strong> کلیه عملیات پرداخت در بستر امن زرین‌پال صورت می‌گیرد و فروشگاه برازنده تن هیچ‌گونه دسترسی به اطلاعات بانکی (شماره کارت، رمز دوم، CVV2) کاربران نداشته و آنها را ذخیره نمی‌کند.</li>
+                        <li><strong>حق ابطال سفارش توسط مشتری:</strong> مشتری می‌تواند از لحظه ثبت سفارش تا پیش از تحویل مرسوله به شرکت حمل‌ونقل (تیپاکس یا پست)، درخواست لغو سفارش خود را به پشتیبانی اعلام نماید. در این صورت، وجه پرداختی ظرف ۷۲ ساعت کاری به حساب مبدأ مسترد می‌شود. پس از تحویل به شرکت حمل‌ونقل، لغو سفارش ممکن نبوده و مشتری باید از شرایط مرجوعی (بخش ۶) استفاده نماید.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- بخش ۵ -->
+            <div class="terms-section">
+                <div class="section-heading">
+                    <div class="section-number">۵</div>
+                    <h2>ارسال و تحویل کالا</h2>
+                </div>
+                <div class="terms-content">
+                    <ol>
+                        <li><strong>روش اصلی ارسال:</strong> ارسال تمامی سفارشات در سراسر ایران، به‌صورت پیش‌فرض توسط شرکت تیپاکس انجام می‌شود.</li>
+                        <li><strong>روش‌های جایگزین:</strong>
+                            <ul>
+                                <li>ارسال از طریق پست پیشتاز صرفاً با درخواست کتبی مشتری و هماهنگی با پشتیبانی امکان‌پذیر است.</li>
+                                <li>ارسال در تهران: امکان استفاده از پیک موتوری با هماهنگی قبلی با واحد پشتیبانی وجود دارد.</li>
+                                <li>در حال حاضر، فروشگاه صرفاً به آدرس‌های داخل ایران ارسال دارد.</li>
+                            </ul>
+                        </li>
+                        <li><strong>هزینه ارسال:</strong> هزینه ارسال بر اساس تعرفه شرکت حمل‌کننده محاسبه و در صفحه تسویه حساب به مبلغ نهایی اضافه می‌شود.</li>
+                        <li><strong>بازه زمانی آماده‌سازی و ارسال:</strong> تمامی سفارش‌های قطعی، معمولاً طی ۱ تا ۳ روز کاری پس از ثبت سفارش، آماده و به شرکت حمل‌ونقل تحویل داده می‌شوند. در بازه‌های زمانی پرازدحام (نظیر تعطیلات عید، بلک فرایدی یا شرایط فورس ماژور) این زمان ممکن است با چند روز تأخیر مواجه شود. این تأخیر موجه تلقی شده و مشتری حق فسخ معامله به این دلیل را نخواهد داشت، مگر آنکه تأخیر بیش از ۱۵ روز به طول انجامد.</li>
+                        <li><strong>مسئولیت و بیمه:</strong> مسئولیت سلامت بسته تا لحظه تحویل آن به مشتری، با فروشگاه است. در صورت مفقودی یا آسیب‌دیدگی بسته در حین حمل، پیگیری و احقاق حق از شرکت حمل‌ونقل بر عهده فروشگاه بوده و نتیجه نهایی به اطلاع مشتری خواهد رسید.</li>
+                        <li>
+                            <strong>تعهد مشتری در زمان تحویل:</strong>
+                            <div class="highlight-box">
+                                مشتری موظف است در زمان تحویل، بسته را در حضور مأمور پست یا پیک بازگشایی نموده و از سلامت ظاهری کالا اطمینان حاصل کند. در صورت بروز هرگونه مغایرت یا آسیب، مشتری باید بلافاصله موضوع را با مأمور تحویل صورت‌جلسه کرده و از تحویل کالا خودداری نماید. استناد به مغایرت یا آسیب فیزیکی کالا، تنها با ارائه صورت‌جلسه رسمی شرکت حمل‌کننده در لحظه تحویل ممکن است.
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- بخش ۶ -->
+            <div class="terms-section">
+                <div class="section-heading">
+                    <div class="section-number">۶</div>
+                    <h2>شرایط مرجوعی و استرداد وجه</h2>
+                </div>
+                <div class="terms-content">
+                    <ol>
+                        <li><strong>شرایط کلی:</strong> درخواست مرجوعی صرفاً در صورت وجود ایراد فنی (نقص در دوخت و دوز) یا ارسال اشتباه (در رنگ، سایز یا مدل) پذیرفته می‌شود. مرجوعی به دلایل سلیقه‌ای یا اختلاف جزئی رنگ (طبق بند ۳-۲) امکان‌پذیر نمی‌باشد.</li>
+                        <li><strong>مهلت درخواست:</strong> مشتری حداکثر ۴۸ ساعت پس از تحویل کالا مهلت دارد تا درخواست مرجوعی خود را از طریق راه‌های ارتباطی پشتیبانی ثبت نماید.</li>
+                        <li><strong>شرایط کالای مرجوعی:</strong> کالای عودت‌داده‌شده باید در همان وضعیت اولیه تحویل به مشتری باشد:
+                            <ul>
+                                <li>تمام برچسب‌ها و اتیکت‌های اصلی متصل باشد.</li>
+                                <li>شسته، اتوکشیده یا استفاده‌نشده باشد.</li>
+                                <li>فاقد هرگونه بو (عطر، عرق، دود) و آلودگی باشد.</li>
+                                <li>در بسته‌بندی اصلی یا بسته‌بندی مشابه و محکم بازگردانده شود.</li>
+                                <li>به دلایل بهداشتی، محصولاتی نظیر لباس زیر، مایو و جوراب در صورت باز شدن بسته‌بندی، مشمول مرجوعی نخواهند شد.</li>
+                            </ul>
+                        </li>
+                        <li><strong>هزینه مرجوعی:</strong>
+                            <ul>
+                                <li>اگر عیب یا مغایرت محرز باشد، هزینه ارسال برگشت بر عهده فروشگاه است.</li>
+                                <li>اگر کالا پس از بررسی کارشناسی، سالم و مطابق سفارش تشخیص داده شود، کالا به هزینه مشتری برای او ارسال مجدد شده و درخواست مرجوعی بسته می‌شود.</li>
+                            </ul>
+                        </li>
+                        <li><strong>فرآیند استرداد وجه:</strong> پس از دریافت و تأیید سلامت و شرایط مرجوعی کالا توسط واحد کنترل کیفی، مبلغ پرداختی مشتری حداکثر ظرف ۷۲ ساعت کاری فقط به همان حساب بانکی مبدأ که از آن خرید انجام شده، عودت داده می‌شود.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- بخش ۷ -->
+            <div class="terms-section">
+                <div class="section-heading">
+                    <div class="section-number">۷</div>
+                    <h2>حریم خصوصی و امنیت اطلاعات</h2>
+                </div>
+                <div class="terms-content">
+                    <ol>
+                        <li><strong>جمع‌آوری اطلاعات:</strong> برازنده تن اطلاعات شخصی کاربران (نام، آدرس، شماره تماس) را صرفاً برای پردازش سفارش و ارائه خدمات بهتر گردآوری می‌کند و نزد ما کاملاً محفوظ است.</li>
+                        <li><strong>عدم اشتراک با شخص ثالث:</strong> تحت هیچ شرایطی اطلاعات تماس یا هویتی مشتریان در اختیار شخص ثالث حقیقی یا حقوقی قرار نخواهد گرفت.</li>
+                        <li><strong>امنیت تراکنش‌ها:</strong> تراکنش‌های مالی از طریق پروتکل امن SSL در بستر زرین‌پال انجام می‌شود و فروشگاه هیچ‌گونه اطلاعات بانکی کاربران را ذخیره نمی‌کند.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- بخش ۸ -->
+            <div class="terms-section">
+                <div class="section-heading">
+                    <div class="section-number">۸</div>
+                    <h2>حقوق مالکیت معنوی</h2>
+                </div>
+                <div class="terms-content">
+                    <ol>
+                        <li>کلیه محتوای این وب‌سایت اعم از عکس‌ها، ویدئوها، متون، لوگو، گرافیک و کدهای نرم‌افزاری، متعلق به برند برازنده تن بوده و تحت حمایت قوانین جمهوری اسلامی ایران قرار دارد.</li>
+                        <li>هرگونه کپی‌برداری، دانلود، انتشار، تغییر یا استفاده تجاری از این محتوا بدون کسب مجوز کتبی از فروشگاه، ممنوع بوده و پیگرد قانونی خواهد داشت.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- بخش ۹ -->
+            <div class="terms-section">
+                <div class="section-heading">
+                    <div class="section-number">۹</div>
+                    <h2>تغییرات قوانین</h2>
+                </div>
+                <div class="terms-content">
+                    <ol>
+                        <li>برازنده تن ممکن است قوانین و مقررات سایت را در هر زمان به‌روزرسانی نماید. نسخه جدید در همین صفحه منتشر شده و از تاریخ انتشار، معتبر خواهد بود.</li>
+                        <li>تغییرات قوانین عطف به ماسبق نمی‌شود. بدین معنی که:
+                            <ul>
+                                <li>کاربران جدید که پس از تاریخ انتشار نسخه جدید ثبت‌نام یا خرید می‌کنند، کاملاً مشمول قوانین جدید هستند.</li>
+                                <li>سفارش‌های ثبت‌شده قبل از اعمال تغییرات، کماکان تحت شمول همان قوانینی خواهند بود که در زمان ثبت سفارش معتبر بوده است.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="update-date">
+                📅 نسخه ۱.۰ – آخرین بروزرسانی: 
+            </div>
+
+            <div class="accept-terms">
+                <button class="btn-accept" onclick="window.history.back()">✅ متوجه شدم - بازگشت</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    </main>
+    
+    <!-- بخش نظرات مشتریان - اسلایدر -->
+    
+    <section class="testimonials-section">
+        <div class="testimonials-header">
+            <h2 class="testimonials-title">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                نظرات مشتریان
+            </h2>
+            <p class="testimonials-subtitle">مشتریان درباره محصولات ما چه می‌گویند</p>
+        </div>
+        
+        <div class="testimonials-slider-container">
+            <button class="slider-nav prev" id="testimonialPrev">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <div class="testimonials-slider" id="testimonialSlider">
+                <div class="testimonials-track" id="testimonialTrack">
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                            </div>
+                            <div class="testimonial-text">
+                                پارچه‌اش نرم و راحته، برای استفاده روزانه پیشنهاد می‌کنم.
+                            </div>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                
+                                    ح
+                                
+                            </div>
+                            <div class="testimonial-user-info">
+                                <div class="testimonial-username">
+                                    
+                                        حسین رضایی
+                                    
+                                </div>
+                                <div class="testimonial-product">
+                                    <a href="product-1.html">زیرپوش کلاسیک سفید</a>
+                                </div>
+                            </div>
+                            <div class="testimonial-date">
+                                ۱۴۰۴/۰۲/۱۵
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ☆
+                                
+                            </div>
+                            <div class="testimonial-text">
+                                بسته‌بندی و ارسال سریع بود، از خرید راضی‌ام.
+                            </div>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                
+                                    ا
+                                
+                            </div>
+                            <div class="testimonial-user-info">
+                                <div class="testimonial-username">
+                                    
+                                        امیر صادقی
+                                    
+                                </div>
+                                <div class="testimonial-product">
+                                    <a href="product-1.html">زیرپوش کلاسیک سفید</a>
+                                </div>
+                            </div>
+                            <div class="testimonial-date">
+                                ۱۴۰۴/۰۲/۱۵
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                            </div>
+                            <div class="testimonial-text">
+                                رنگش کمی با عکس فرق داشت ولی در کل کیفیت خوبی داشت.
+                            </div>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                
+                                    ر
+                                
+                            </div>
+                            <div class="testimonial-user-info">
+                                <div class="testimonial-username">
+                                    
+                                        رضا بهرامی
+                                    
+                                </div>
+                                <div class="testimonial-product">
+                                    <a href="product-2.html">زیرپوش نخی مشکی</a>
+                                </div>
+                            </div>
+                            <div class="testimonial-date">
+                                ۱۴۰۴/۰۲/۱۵
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ☆
+                                
+                            </div>
+                            <div class="testimonial-text">
+                                کیفیت دوخت خیلی خوب بود، سایزش هم دقیقا طبق راهنمای سایت بود.
+                            </div>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                
+                                    م
+                                
+                            </div>
+                            <div class="testimonial-user-info">
+                                <div class="testimonial-username">
+                                    
+                                        محمد کریمی
+                                    
+                                </div>
+                                <div class="testimonial-product">
+                                    <a href="product-2.html">زیرپوش نخی مشکی</a>
+                                </div>
+                            </div>
+                            <div class="testimonial-date">
+                                ۱۴۰۴/۰۲/۱۵
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                            </div>
+                            <div class="testimonial-text">
+                                پارچه‌اش نرم و راحته، برای استفاده روزانه پیشنهاد می‌کنم.
+                            </div>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                
+                                    ح
+                                
+                            </div>
+                            <div class="testimonial-user-info">
+                                <div class="testimonial-username">
+                                    
+                                        حسین رضایی
+                                    
+                                </div>
+                                <div class="testimonial-product">
+                                    <a href="product-3.html">زیرپوش رکابی طوسی</a>
+                                </div>
+                            </div>
+                            <div class="testimonial-date">
+                                ۱۴۰۴/۰۲/۱۵
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ☆
+                                
+                            </div>
+                            <div class="testimonial-text">
+                                بسته‌بندی و ارسال سریع بود، از خرید راضی‌ام.
+                            </div>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                
+                                    ا
+                                
+                            </div>
+                            <div class="testimonial-user-info">
+                                <div class="testimonial-username">
+                                    
+                                        امیر صادقی
+                                    
+                                </div>
+                                <div class="testimonial-product">
+                                    <a href="product-3.html">زیرپوش رکابی طوسی</a>
+                                </div>
+                            </div>
+                            <div class="testimonial-date">
+                                ۱۴۰۴/۰۲/۱۵
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                            </div>
+                            <div class="testimonial-text">
+                                رنگش کمی با عکس فرق داشت ولی در کل کیفیت خوبی داشت.
+                            </div>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                
+                                    ر
+                                
+                            </div>
+                            <div class="testimonial-user-info">
+                                <div class="testimonial-username">
+                                    
+                                        رضا بهرامی
+                                    
+                                </div>
+                                <div class="testimonial-product">
+                                    <a href="product-4.html">ست ۳ عددی زیرپوش</a>
+                                </div>
+                            </div>
+                            <div class="testimonial-date">
+                                ۱۴۰۴/۰۲/۱۵
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ☆
+                                
+                            </div>
+                            <div class="testimonial-text">
+                                کیفیت دوخت خیلی خوب بود، سایزش هم دقیقا طبق راهنمای سایت بود.
+                            </div>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                
+                                    م
+                                
+                            </div>
+                            <div class="testimonial-user-info">
+                                <div class="testimonial-username">
+                                    
+                                        محمد کریمی
+                                    
+                                </div>
+                                <div class="testimonial-product">
+                                    <a href="product-4.html">ست ۳ عددی زیرپوش</a>
+                                </div>
+                            </div>
+                            <div class="testimonial-date">
+                                ۱۴۰۴/۰۲/۱۵
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                            </div>
+                            <div class="testimonial-text">
+                                پارچه‌اش نرم و راحته، برای استفاده روزانه پیشنهاد می‌کنم.
+                            </div>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                
+                                    ح
+                                
+                            </div>
+                            <div class="testimonial-user-info">
+                                <div class="testimonial-username">
+                                    
+                                        حسین رضایی
+                                    
+                                </div>
+                                <div class="testimonial-product">
+                                    <a href="product-5.html">شورت مردانه کلاسیک</a>
+                                </div>
+                            </div>
+                            <div class="testimonial-date">
+                                ۱۴۰۴/۰۲/۱۵
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ☆
+                                
+                            </div>
+                            <div class="testimonial-text">
+                                بسته‌بندی و ارسال سریع بود، از خرید راضی‌ام.
+                            </div>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                
+                                    ا
+                                
+                            </div>
+                            <div class="testimonial-user-info">
+                                <div class="testimonial-username">
+                                    
+                                        امیر صادقی
+                                    
+                                </div>
+                                <div class="testimonial-product">
+                                    <a href="product-5.html">شورت مردانه کلاسیک</a>
+                                </div>
+                            </div>
+                            <div class="testimonial-date">
+                                ۱۴۰۴/۰۲/۱۵
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                            </div>
+                            <div class="testimonial-text">
+                                رنگش کمی با عکس فرق داشت ولی در کل کیفیت خوبی داشت.
+                            </div>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                
+                                    ر
+                                
+                            </div>
+                            <div class="testimonial-user-info">
+                                <div class="testimonial-username">
+                                    
+                                        رضا بهرامی
+                                    
+                                </div>
+                                <div class="testimonial-product">
+                                    <a href="product-6.html">شورت باکسر نخی</a>
+                                </div>
+                            </div>
+                            <div class="testimonial-date">
+                                ۱۴۰۴/۰۲/۱۵
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ☆
+                                
+                            </div>
+                            <div class="testimonial-text">
+                                کیفیت دوخت خیلی خوب بود، سایزش هم دقیقا طبق راهنمای سایت بود.
+                            </div>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                
+                                    م
+                                
+                            </div>
+                            <div class="testimonial-user-info">
+                                <div class="testimonial-username">
+                                    
+                                        محمد کریمی
+                                    
+                                </div>
+                                <div class="testimonial-product">
+                                    <a href="product-6.html">شورت باکسر نخی</a>
+                                </div>
+                            </div>
+                            <div class="testimonial-date">
+                                ۱۴۰۴/۰۲/۱۵
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                            </div>
+                            <div class="testimonial-text">
+                                پارچه‌اش نرم و راحته، برای استفاده روزانه پیشنهاد می‌کنم.
+                            </div>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                
+                                    ح
+                                
+                            </div>
+                            <div class="testimonial-user-info">
+                                <div class="testimonial-username">
+                                    
+                                        حسین رضایی
+                                    
+                                </div>
+                                <div class="testimonial-product">
+                                    <a href="product-7.html">شورت بوکسر طرح‌دار</a>
+                                </div>
+                            </div>
+                            <div class="testimonial-date">
+                                ۱۴۰۴/۰۲/۱۵
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ☆
+                                
+                            </div>
+                            <div class="testimonial-text">
+                                بسته‌بندی و ارسال سریع بود، از خرید راضی‌ام.
+                            </div>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                
+                                    ا
+                                
+                            </div>
+                            <div class="testimonial-user-info">
+                                <div class="testimonial-username">
+                                    
+                                        امیر صادقی
+                                    
+                                </div>
+                                <div class="testimonial-product">
+                                    <a href="product-7.html">شورت بوکسر طرح‌دار</a>
+                                </div>
+                            </div>
+                            <div class="testimonial-date">
+                                ۱۴۰۴/۰۲/۱۵
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                            </div>
+                            <div class="testimonial-text">
+                                رنگش کمی با عکس فرق داشت ولی در کل کیفیت خوبی داشت.
+                            </div>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                
+                                    ر
+                                
+                            </div>
+                            <div class="testimonial-user-info">
+                                <div class="testimonial-username">
+                                    
+                                        رضا بهرامی
+                                    
+                                </div>
+                                <div class="testimonial-product">
+                                    <a href="product-8.html">ست ۵ عددی شورت</a>
+                                </div>
+                            </div>
+                            <div class="testimonial-date">
+                                ۱۴۰۴/۰۲/۱۵
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="testimonial-stars">
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ★
+                                
+                                    ☆
+                                
+                            </div>
+                            <div class="testimonial-text">
+                                کیفیت دوخت خیلی خوب بود، سایزش هم دقیقا طبق راهنمای سایت بود.
+                            </div>
+                        </div>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-avatar">
+                                
+                                    م
+                                
+                            </div>
+                            <div class="testimonial-user-info">
+                                <div class="testimonial-username">
+                                    
+                                        محمد کریمی
+                                    
+                                </div>
+                                <div class="testimonial-product">
+                                    <a href="product-8.html">ست ۵ عددی شورت</a>
+                                </div>
+                            </div>
+                            <div class="testimonial-date">
+                                ۱۴۰۴/۰۲/۱۵
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <button class="slider-nav next" id="testimonialNext">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <script>
+    (function() {
+        const track = document.getElementById('testimonialTrack');
+        const prevBtn = document.getElementById('testimonialPrev');
+        const nextBtn = document.getElementById('testimonialNext');
+        const slider = document.getElementById('testimonialSlider');
+        const cards = track.querySelectorAll('.testimonial-card');
+        
+        if (cards.length === 0) return;
+        
+        const isMobile = window.innerWidth <= 768;
+        let currentIndex = 0;
+        let autoPlayInterval = null;
+        
+        // تنظیم دکمه‌ها
+        if (!isMobile && cards.length <= 3) {
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+        }
+        
+        if (isMobile) {
+            // ========== موبایل ==========
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+            
+            function scrollToCard(index) {
+                const card = cards[index];
+                if (card) {
+                    const sliderRect = slider.getBoundingClientRect();
+                    const cardRect = card.getBoundingClientRect();
+                    const scrollLeft = slider.scrollLeft;
+                    const targetScroll = scrollLeft + (cardRect.left - sliderRect.left) - (sliderRect.width - cardRect.width) / 2;
+                    
+                    slider.scrollTo({
+                        left: targetScroll,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+            
+            function getCurrentIndex() {
+                const sliderRect = slider.getBoundingClientRect();
+                const sliderCenter = sliderRect.left + sliderRect.width / 2;
+                let closestIndex = 0;
+                let minDistance = Infinity;
+                
+                cards.forEach((card, index) => {
+                    const cardRect = card.getBoundingClientRect();
+                    const cardCenter = cardRect.left + cardRect.width / 2;
+                    const distance = Math.abs(sliderCenter - cardCenter);
+                    
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        closestIndex = index;
+                    }
+                });
+                
+                return closestIndex;
+            }
+            
+            function startAutoPlay() {
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
+                autoPlayInterval = setInterval(() => {
+                    const currentIdx = getCurrentIndex();
+                    if (currentIdx < cards.length - 1) {
+                        scrollToCard(currentIdx + 1);
+                    } else {
+                        scrollToCard(0);
+                    }
+                }, 4000);
+            }
+            
+            startAutoPlay();
+            
+            slider.addEventListener('touchstart', () => {
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
+            });
+            
+            slider.addEventListener('touchend', () => {
+                if (!autoPlayInterval) startAutoPlay();
+            });
+            
+        } else {
+            // ========== دسکتاپ ==========
+            const visibleCount = 3;
+            
+            function updateButtons() {
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex >= cards.length - visibleCount;
+            }
+            
+            function goToSlide(index) {
+                track.classList.add('sliding');
+                
+                const cardWidth = cards[0].offsetWidth;
+                const gap = 20;
+                const offset = index * (cardWidth + gap);
+                track.style.transform = `translateX(${offset}px)`;
+                
+                setTimeout(() => {
+                    track.classList.remove('sliding');
+                }, 800);
+                
+                currentIndex = index;
+                updateButtons();
+            }
+            
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    goToSlide(currentIndex - 1);
+                }
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < cards.length - visibleCount) {
+                    goToSlide(currentIndex + 1);
+                } else {
+                    goToSlide(0);
+                }
+            });
+            
+            function startAutoPlay() {
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
+                autoPlayInterval = setInterval(() => {
+                    if (currentIndex < cards.length - visibleCount) {
+                        goToSlide(currentIndex + 1);
+                    } else {
+                        goToSlide(0);
+                    }
+                }, 4000);
+            }
+            
+            startAutoPlay();
+            
+            slider.addEventListener('mouseenter', () => {
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
+            });
+            
+            slider.addEventListener('mouseleave', () => {
+                if (!autoPlayInterval) startAutoPlay();
+            });
+            
+            updateButtons();
+            
+            // بروزرسانی در resize
+            window.addEventListener('resize', () => {
+                if (cards.length > 0) {
+                    const cardWidth = cards[0].offsetWidth;
+                    const gap = 20;
+                    const offset = currentIndex * (cardWidth + gap);
+                    track.style.transform = `translateX(${offset}px)`;
+                }
+            });
+        }
+    })();
+    </script>
+    
+    
+    <!-- فوتر -->
+    <footer class="footer">
+        <div class="faq-grid">
+            <a href="faq.html" class="faq-card">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                سوالات متداول
+            </a>
+            <a href="faq.html" class="faq-card">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="1" y="3" width="15" height="13"></rect>
+                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                </svg>
+                نحوه ارسال
+            </a>
+            <a href="faq.html" class="faq-card">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="1 4 1 10 7 10"></polyline>
+                    <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                </svg>
+                بازگشت کالا
+            </a>
+            <a href="faq.html" class="faq-card">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                    <line x1="2" y1="10" x2="22" y2="10"></line>
+                </svg>
+                روش‌های پرداخت
+            </a>
+            <a href="faq.html" class="faq-card">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                پشتیبانی
+            </a>
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-links">
+            <a href="contact.html">تماس با ما</a>
+            <a href="about.html">درباره ما</a>
+            <a href="terms.html">قوانین سایت</a>
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-bottom">
+            <span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                ۰۲۱-۹۱۲۳۴۵۶۷
+            </span>
+            <span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                نماد اعتماد الکترونیکی
+            </span>
+        </div>
+    </footer>
+
+    <!-- هدر پایین ثابت (منو) -->
+    <nav class="bottom-nav">
+        <div class="nav-items">
+            <div class="nav-indicator" id="navIndicator" aria-hidden="true"></div>
+            <a href="index.html" class="nav-item ">
+                <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2h-5v-7H9v7H4a2 2 0 0 1-2-2z"/>
+                </svg>
+                <span class="nav-label">خانه</span>
+            </a>
+            <a href="products.html" class="nav-item ">
+                <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="16" y1="3" x2="16" y2="7"></line>
+                    <line x1="8" y1="3" x2="8" y2="7"></line>
+                </svg>
+                <span class="nav-label">دسته‌ها</span>
+            </a>
+            <a href="blog.html" class="nav-item ">
+                <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+                    <line x1="8" y1="10" x2="16" y2="10"></line>
+                </svg>
+                <span class="nav-label">مقالات</span>
+            </a>
+            <a href="cart.html" class="nav-item ">
+                <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span class="nav-label">سبد</span>
+            </a>
+            <a href="profile.html" class="nav-item ">
+                
+                    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                
+                <span class="nav-label">پروفایل</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // ========== مدیریت جستجوی موبایل ==========
+        (function() {
+            const searchToggle = document.getElementById('mobileSearchToggle');
+            const closeSearchBtn = document.getElementById('closeSearchBtn');
+            const searchForm = document.getElementById('searchForm');
+            const brandWrapper = document.getElementById('brandWrapper');
+            const searchInput = document.getElementById('searchInput');
+            
+            // فقط در موبایل این قابلیت فعال باشه
+            if (!searchToggle || !searchForm || window.innerWidth > 767) return;
+            
+            let closeTimer = null;
+            
+            // تابع باز کردن جستجو
+            function openSearch() {
+                // لغو تایمر قبلی
+                if (closeTimer) {
+                    clearTimeout(closeTimer);
+                    closeTimer = null;
+                }
+                
+                searchForm.classList.add('active');
+                brandWrapper.classList.add('hidden');
+                searchToggle.classList.add('hidden');
+                closeSearchBtn.classList.add('active');
+                
+                // فوکوس روی input
+                setTimeout(() => {
+                    if (searchInput) searchInput.focus();
+                }, 100);
+                
+                // تنظیم تایمر 10 ثانیه‌ای
+                startCloseTimer();
+            }
+            
+            // تابع بستن جستجو
+            function closeSearch() {
+                // لغو تایمر
+                if (closeTimer) {
+                    clearTimeout(closeTimer);
+                    closeTimer = null;
+                }
+                
+                searchForm.classList.remove('active');
+                brandWrapper.classList.remove('hidden');
+                searchToggle.classList.remove('hidden');
+                closeSearchBtn.classList.remove('active');
+                
+                // پاک کردن فوکوس
+                if (searchInput) searchInput.blur();
+            }
+            
+            // شروع تایمر 10 ثانیه‌ای برای بستن خودکار
+            function startCloseTimer() {
+                if (closeTimer) {
+                    clearTimeout(closeTimer);
+                }
+                
+                closeTimer = setTimeout(() => {
+                    // فقط اگر کاربر چیزی تایپ نکرده باشه
+                    if (searchInput && searchInput.value.trim() === '') {
+                        closeSearch();
+                    } else {
+                        // اگه چیزی تایپ کرده، تایمر رو ریست کن
+                        startCloseTimer();
+                    }
+                }, 10000); // 10 ثانیه
+            }
+            
+            // ریست تایمر وقتی کاربر تایپ میکنه
+            function resetTimer() {
+                if (searchForm.classList.contains('active')) {
+                    startCloseTimer();
+                }
+            }
+            
+            // کلیک روی دکمه جستجو
+            searchToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                openSearch();
+            });
+            
+            // کلیک روی دکمه بستن
+            closeSearchBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                closeSearch();
+            });
+            
+            // وقتی کاربر تایپ میکنه، تایمر رو ریست کن
+            if (searchInput) {
+                searchInput.addEventListener('input', resetTimer);
+                searchInput.addEventListener('keydown', resetTimer);
+                
+                // ارسال فرم با Enter
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        // تایمر رو لغو کن
+                        if (closeTimer) {
+                            clearTimeout(closeTimer);
+                        }
+                        searchForm.submit();
+                    }
+                });
+            }
+            
+            // بستن با کلید Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && searchForm.classList.contains('active')) {
+                    closeSearch();
+                }
+            });
+            
+            // وقتی از موبایل خارج میشیم (resize)
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 767 && searchForm.classList.contains('active')) {
+                    closeSearch();
+                    // برگردوندن استایل‌ها به حالت عادی
+                    brandWrapper.classList.remove('hidden');
+                    searchToggle.classList.remove('hidden');
+                    closeSearchBtn.classList.remove('active');
+                }
+            });
+            
+        })();
+
+        // ========== اسکریپت‌های عمومی ==========
+        if (window.innerWidth <= 768) {
+            document.body.classList.add('mobile-view');
+        }
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.products-wrapper').forEach(wrapper => {
+                let startX;
+                wrapper.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; });
+                wrapper.addEventListener('touchend', (e) => {
+                    if (!startX) return;
+                    const endX = e.changedTouches[0].clientX;
+                    const diff = startX - endX;
+                    if (Math.abs(diff) > 50) {
+                        wrapper.scrollBy({ left: diff > 0 ? 280 : -280, behavior: 'smooth' });
+                    }
+                });
+            });
+        }
+    </script>
+    <script>
+    (function () {
+        // ========== نمایش/مخفی‌سازی هدر شناور هنگام اسکرول ==========
+        var header = document.querySelector('.main-header');
+        var searchFormEl = document.getElementById('searchForm');
+
+        if (header) {
+            var lastScrollY = window.scrollY;
+            var ticking = false;
+
+            function updateHeader() {
+                var currentY = window.scrollY;
+                var searchOpen = searchFormEl && searchFormEl.classList.contains('active');
+
+                if (!searchOpen) {
+                    if (currentY > lastScrollY && currentY > 90) {
+                        header.classList.add('header-hidden');
+                    } else if (currentY < lastScrollY || currentY <= 90) {
+                        header.classList.remove('header-hidden');
+                    }
+                }
+                lastScrollY = currentY;
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', function () {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateHeader);
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
+
+        // ========== دایره‌ی متحرک منوی پایین ==========
+        var navItems = document.querySelector('.nav-items');
+        var indicator = document.getElementById('navIndicator');
+
+        if (navItems && indicator) {
+            var indicatorSettled = false;
+
+            function positionIndicator(instant) {
+                var active = navItems.querySelector('.nav-item.active');
+                if (!active) {
+                    indicator.style.opacity = '0';
+                    return;
+                }
+                var itemRect = active.getBoundingClientRect();
+                var containerRect = navItems.getBoundingClientRect();
+                var size = Math.max(itemRect.width, itemRect.height) + 10;
+                var centerX = itemRect.left - containerRect.left + itemRect.width / 2;
+                var centerY = itemRect.top - containerRect.top + itemRect.height / 2;
+
+                if (instant) {
+                    indicator.style.transition = 'none';
+                }
+
+                indicator.style.width = size + 'px';
+                indicator.style.height = size + 'px';
+                indicator.style.left = centerX + 'px';
+                indicator.style.top = centerY + 'px';
+                indicator.style.opacity = '1';
+
+                if (instant) {
+                    void indicator.offsetWidth; // اجبار به بازچینی، قبل از برگردوندن ترنزیشن
+                    indicator.style.transition = '';
+                }
+            }
+
+            function settleIndicator() {
+                if (indicatorSettled) return;
+                indicatorSettled = true;
+                positionIndicator(true);
+            }
+
+            // یک بار، بدون انیمیشن، بعد از اینکه فونت و آواتار پروفایل هم کامل لود شدن —
+            // تا هیچ جابه‌جایی/پرشی موقع لود صفحه دیده نشه
+            var fontsPromise = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+            var loadPromise = (document.readyState === 'complete')
+                ? Promise.resolve()
+                : new Promise(function (resolve) { window.addEventListener('load', resolve); });
+
+            Promise.all([fontsPromise, loadPromise]).then(settleIndicator);
+            // محافظ: اگر لود کامل خیلی طول کشید، بعد از یک ثانیه به‌هرحال جای درست بشین
+            setTimeout(settleIndicator, 1000);
+
+            window.addEventListener('resize', function () {
+                positionIndicator(false);
+            });
+
+            // وقتی روی یه تب دیگه کلیک می‌شه: اول دایره با انیمیشن به همون تب می‌ره،
+            // بعد صفحه عوض می‌شه — چون این یه سایت چندصفحه‌ایه، نه SPA
+            var navLinks = navItems.querySelectorAll('.nav-item');
+            navLinks.forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    if (link.classList.contains('active')) return;
+                    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+                    var href = link.getAttribute('href');
+                    if (!href) return;
+
+                    e.preventDefault();
+
+                    var currentActive = navItems.querySelector('.nav-item.active');
+                    if (currentActive) currentActive.classList.remove('active');
+                    link.classList.add('active');
+                    positionIndicator(false);
+
+                    window.setTimeout(function () {
+                        window.location.href = href;
+                    }, 430);
+                });
+            });
+        }
+    })();
+    </script>
+    <script>
+    (function() {
+        function adjustHeaderPosition() {
+            const announcements = document.querySelector('.announcement-wrapper');
+            const header = document.querySelector('.main-header');
+            
+            if (announcements && header) {
+                const announcementHeight = announcements.offsetHeight;
+                // هدر رو دقیقاً زیر نوار اعلان قرار بده
+                header.style.top = announcementHeight + 'px';
+            }
+        }
+        
+        // اجرا بعد از لود صفحه
+        window.addEventListener('load', adjustHeaderPosition);
+        
+        // اجرا بعد از تغییر اندازه صفحه
+        window.addEventListener('resize', adjustHeaderPosition);
+        
+        // اجرا بعد از لود DOM
+        document.addEventListener('DOMContentLoaded', adjustHeaderPosition);
+        
+        // یه بار دیگه بعد از ۱۰۰ms برای اطمینان
+        setTimeout(adjustHeaderPosition, 100);
+    })();
+    </script>
+    
+    
+
+    <!-- مودال تخفیف / اعلانات ورود کاربر -->
+    
+
+    <!-- اضافه کردن ویجت Eilik به همه صفحات -->
+    <style>
+/* ── wrapper ── */
+#eilik-global{position:fixed;top:0;left:0;z-index:99999;pointer-events:none;font-family:'Vazirmatn',sans-serif}
+
+/* ── robot container ── */
+#eilik-wrap{
+  position:absolute;top:60px;left:0;   /* ← 18px از بالا: زیر هدر */
+  pointer-events:auto;cursor:pointer;
+  transform-origin:top left;
+  transition:transform .52s cubic-bezier(.34,1.28,.64,1);
+}
+/* desktop size */
+#eilik-svg{width:96px;display:block;filter:drop-shadow(0 6px 18px rgba(17,17,17,.13));animation:e-bob 2.6s ease-in-out infinite}
+#eilik-wrap.state-peek #eilik-svg{animation:none}
+@keyframes e-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+/* STATE: hidden — نصف صورت پیداست */
+#eilik-wrap.state-hidden{transform:translateX(-50px) rotate(0deg)}
+/* STATE: peek — صورت کامل + نصف بدن، کج به راست */
+#eilik-wrap.state-peek  {transform:translateX(0px)   rotate(20deg)}
+/* STATE: full — کاملاً بیرون */
+#eilik-wrap.state-full  {transform:translateX(10px)  rotate(0deg)}
+
+/* eye/heart classes */
+.ew{fill:#FFFFFF;transition:fill .25s}
+.eh{fill:#B23A4A;opacity:0;transition:opacity .3s}
+.ebar{transition:transform .12s ease}
+#eilik-svg.heart-mode .ew  {fill:#B23A4A}
+#eilik-svg.heart-mode .ebar{opacity:0}
+#eilik-svg.heart-mode .eh  {opacity:1}
+
+/* bubble */
+#eilik-bubble{
+  position:absolute;top:28px;left:104px;
+  background:#111111;color:#FFFFFF;
+  font-size:12px;font-weight:500;
+  padding:9px 14px;
+  border-radius:14px 14px 14px 3px;
+  box-shadow:0 4px 18px rgba(17,17,17,.18);
+  opacity:0;transform:scale(.85) translateX(-8px);
+  transform-origin:left center;
+  transition:opacity .3s,transform .3s;
+  pointer-events:auto;cursor:pointer;
+  line-height:1.55;max-width:190px;white-space:normal;
+}
+#eilik-bubble::before{content:'';position:absolute;top:12px;left:-6px;border:6px solid transparent;border-right-color:#111111;border-left:0}
+#eilik-bubble.show{opacity:1;transform:scale(1) translateX(0)}
+
+/* ══ CHAT ══ */
+#eilik-chat{
+  position:fixed;bottom:18px;left:18px;
+  width:330px;max-height:510px;
+  background:#FFFFFF;border-radius:22px;
+  box-shadow:0 22px 64px rgba(17,17,17,.17),0 4px 16px rgba(17,17,17,.07);
+  display:flex;flex-direction:column;overflow:hidden;
+  opacity:0;transform:scale(.9) translateY(20px);
+  transform-origin:bottom left;
+  transition:opacity .35s,transform .35s cubic-bezier(.34,1.28,.64,1);
+  pointer-events:none;z-index:99998;
+  font-family:'Vazirmatn',sans-serif;direction:rtl;
+}
+#eilik-chat.open{opacity:1;transform:scale(1) translateY(0);pointer-events:auto}
+.ec-header{background:#111111;padding:13px 16px;display:flex;flex-direction:row-reverse;align-items:center;gap:10px;flex-shrink:0}
+.ec-avatar{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+.ec-avatar svg{width:100%;height:100%}
+.ec-title{margin-right:auto}
+.ec-title strong{display:block;color:#FFFFFF;font-size:13px}
+.ec-title span{color:rgba(255,255,255,.4);font-size:11px}
+.ec-close{color:rgba(255,255,255,.4);font-size:22px;cursor:pointer;transition:color .2s;padding:0 6px;line-height:1}
+.ec-close:hover{color:#FFFFFF}
+.ec-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:9px;background:rgba(184,138,68,0.14);min-height:190px}
+.ec-messages::-webkit-scrollbar{width:3px}
+.ec-messages::-webkit-scrollbar-thumb{background:rgba(17,17,17,0.1);border-radius:2px}
+.ec-msg{max-width:84%;padding:9px 13px;border-radius:14px;font-size:13px;line-height:1.65;animation:ec-pop .22s ease}
+@keyframes ec-pop{from{opacity:0;transform:scale(.92) translateY(4px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.ec-msg.bot{background:#111111;color:#FFFFFF;border-bottom-right-radius:3px;align-self:flex-end}
+.ec-msg.user{background:#FFFFFF;color:#111111;border-bottom-left-radius:3px;align-self:flex-start;box-shadow:0 2px 8px rgba(17,17,17,.06)}
+.ec-typing{display:flex;gap:4px;padding:11px 13px;background:#111111;border-radius:14px 14px 3px 14px;align-self:flex-end;width:fit-content}
+.ec-typing span{width:6px;height:6px;background:rgba(255,255,255,.5);border-radius:50%;animation:ec-dot 1.2s infinite}
+.ec-typing span:nth-child(2){animation-delay:.2s}
+.ec-typing span:nth-child(3){animation-delay:.4s}
+@keyframes ec-dot{0%,80%,100%{transform:scale(.7);opacity:.4}40%{transform:scale(1);opacity:1}}
+.ec-quick{padding:8px 10px;display:flex;flex-wrap:wrap;gap:6px;background:rgba(184,138,68,0.14);border-top:1px solid rgba(184,138,68,0.14);flex-shrink:0}
+.ec-qbtn{padding:6px 12px;background:#FFFFFF;border:1px solid rgba(184,138,68,0.14);border-radius:18px;font-family:'Vazirmatn',sans-serif;font-size:11px;color:#111111;cursor:pointer;transition:all .18s;white-space:nowrap}
+.ec-qbtn:hover{background:#111111;color:#FFFFFF;border-color:#111111}
+.ec-input-row{display:flex;gap:8px;padding:11px 13px;background:#FFFFFF;border-top:1px solid rgba(184,138,68,0.14);flex-shrink:0}
+.ec-input{flex:1;padding:9px 13px;border-radius:18px;border:1px solid rgba(184,138,68,0.14);font-family:'Vazirmatn',sans-serif;font-size:13px;outline:none;direction:rtl;background:rgba(184,138,68,0.14);transition:border-color .2s}
+.ec-input:focus{border-color:#111111}
+.ec-send{width:38px;height:38px;background:#111111;border:none;border-radius:50%;color:#FFFFFF;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .15s;flex-shrink:0}
+.ec-send:hover{background:#5C4633;transform:scale(1.06)}
+
+/* ── mobile overrides ── */
+@media(max-width:768px){
+  #eilik-svg{width:68px}
+  #eilik-wrap.state-hidden{transform:translateX(-36px) rotate(0deg)}
+  #eilik-wrap.state-peek  {transform:translateX(0px)   rotate(20deg)}
+  #eilik-wrap.state-full  {transform:translateX(6px)   rotate(0deg)}
+  #eilik-bubble{left:76px;font-size:11px}
+  #eilik-chat{width:calc(100vw - 28px);left:14px;bottom:14px}
+}
+</style>
+
+<!-- ═══ ROBOT ═══ -->
+<div id="eilik-global">
+  <div id="eilik-wrap" class="state-hidden">
+    <svg id="eilik-svg" viewBox="0 0 130 190" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="42" cy="183" rx="20" ry="7" fill="rgba(17,17,17,0.1)" stroke="#111111" stroke-width="1.5"/>
+      <ellipse cx="88" cy="183" rx="20" ry="7" fill="rgba(17,17,17,0.1)" stroke="#111111" stroke-width="1.5"/>
+      <ellipse cx="36" cy="180" rx="8" ry="4" fill="rgba(17,17,17,0.1)"/>
+      <ellipse cx="82" cy="180" rx="8" ry="4" fill="rgba(17,17,17,0.1)"/>
+      <rect fill="rgba(17,17,17,0.1)" stroke="#111111" stroke-width="1.5" x="30" y="144" width="24" height="42" rx="12"/>
+      <rect fill="rgba(17,17,17,0.1)" stroke="#111111" stroke-width="1.5" x="76" y="144" width="24" height="42" rx="12"/>
+      <rect fill="rgba(17,17,17,0.1)" x="38" y="150" width="8" height="28" rx="4"/>
+      <rect fill="rgba(17,17,17,0.1)" x="84" y="150" width="8" height="28" rx="4"/>
+      <rect fill="rgba(17,17,17,0.1)" stroke="#111111" stroke-width="2" x="22" y="78" width="86" height="74" rx="22"/>
+      <rect fill="rgba(17,17,17,0.1)" stroke="#111111" stroke-width="1" x="34" y="108" width="62" height="32" rx="10"/>
+      <circle fill="#111111" cx="46" cy="124" r="3.5" opacity=".6"/>
+      <circle fill="#111111" cx="65" cy="124" r="3.5" opacity=".35"/>
+      <circle fill="#111111" cx="84" cy="124" r="3.5" opacity=".6"/>
+      <circle fill="#111111" cx="65" cy="113" r="4" opacity=".5"/>
+      <circle fill="#5C4633" cx="65" cy="113" r="2.2" opacity=".8"/>
+      <rect fill="rgba(17,17,17,0.1)" stroke="#111111" stroke-width="1" x="42" y="77" width="46" height="6" rx="3"/>
+      <rect fill="rgba(17,17,17,0.1)" stroke="#111111" stroke-width="1.5" x="48" y="68" width="34" height="16" rx="8"/>
+      <rect fill="#FFFFFF" stroke="#111111" stroke-width="2.5" x="8" y="6" width="114" height="78" rx="28"/>
+      <rect fill="rgba(255,255,255,.7)" x="16" y="10" width="98" height="14" rx="12"/>
+      <rect fill="rgba(17,17,17,0.1)" stroke="#111111" stroke-width="1.5" x="0" y="22" width="12" height="34" rx="6"/>
+      <rect fill="rgba(17,17,17,0.1)" stroke="#111111" stroke-width="1.5" x="118" y="22" width="12" height="34" rx="6"/>
+      <rect fill="rgba(17,17,17,0.1)" x="2" y="28" width="6" height="16" rx="3"/>
+      <rect fill="rgba(17,17,17,0.1)" x="122" y="28" width="6" height="16" rx="3"/>
+      <rect fill="#111111" stroke="#111111" stroke-width="2" x="18" y="16" width="94" height="58" rx="18"/>
+      <rect fill="none" stroke="rgba(255,255,255,.07)" stroke-width="1" x="20" y="18" width="90" height="54" rx="17"/>
+      <!-- ══ ARMS with pivot on shoulders ══ -->
+      <g id="ew-arm-l" style="transform-origin:13px 82px;transform:rotate(0deg);transition:transform 0.45s cubic-bezier(.34,1.28,.64,1)">
+        <rect fill="rgba(17,17,17,0.1)" stroke="#111111" stroke-width="1.5" x="4" y="82" width="18" height="52" rx="9"/>
+        <rect fill="rgba(17,17,17,0.1)" x="8" y="90" width="6" height="30" rx="3"/>
+        <circle fill="rgba(17,17,17,0.1)" stroke="#111111" stroke-width="1.5" cx="13" cy="137" r="10"/>
+      </g>
+      <g id="ew-arm-r" style="transform-origin:117px 82px;transform:rotate(0deg);transition:transform 0.45s cubic-bezier(.34,1.28,.64,1)">
+        <rect fill="rgba(17,17,17,0.1)" stroke="#111111" stroke-width="1.5" x="108" y="82" width="18" height="52" rx="9"/>
+        <rect fill="rgba(17,17,17,0.1)" x="116" y="90" width="6" height="30" rx="3"/>
+        <circle fill="rgba(17,17,17,0.1)" stroke="#111111" stroke-width="1.5" cx="117" cy="137" r="10"/>
+      </g>
+      <g id="ew-eye-l">
+        <ellipse fill="rgba(255,255,255,.07)" cx="42" cy="43" rx="15" ry="17"/>
+        <g id="ew-lbars">
+          <rect class="ebar ew" x="33" y="31" width="8" height="24" rx="4"/>
+          <rect class="ebar ew" x="44" y="31" width="8" height="24" rx="4"/>
+        </g>
+        <path id="ew-lh" class="eh" d="M42,56 C42,56 30,47 30,39.5 A9,9,0,0,1 42,32 A9,9,0,0,1 54,39.5 C54,47 42,56 42,56Z"/>
+        <circle fill="rgba(255,255,255,.55)" cx="36" cy="34" r="2"/>
+        <circle fill="rgba(255,255,255,.3)" cx="47" cy="34" r="1.5"/>
+      </g>
+      <g id="ew-eye-r">
+        <ellipse fill="rgba(255,255,255,.07)" cx="88" cy="43" rx="15" ry="17"/>
+        <g id="ew-rbars">
+          <rect class="ebar ew" x="79" y="31" width="8" height="24" rx="4"/>
+          <rect class="ebar ew" x="90" y="31" width="8" height="24" rx="4"/>
+        </g>
+        <path id="ew-rh" class="eh" d="M88,56 C88,56 76,47 76,39.5 A9,9,0,0,1 88,32 A9,9,0,0,1 100,39.5 C100,47 88,56 88,56Z"/>
+        <circle fill="rgba(255,255,255,.55)" cx="82" cy="34" r="2"/>
+        <circle fill="rgba(255,255,255,.3)" cx="93" cy="34" r="1.5"/>
+      </g>
+      <rect fill="rgba(255,255,255,.25)" x="48" y="62" width="34" height="3.5" rx="1.75"/>
+      <circle fill="#5C4633" cx="65" cy="6" r="5"/>
+      <circle fill="#B88A44" cx="65" cy="6" r="2.5"/>
+    </svg>
+    <div id="eilik-bubble"></div>
+  </div>
+</div>
+
+<!-- ═══ CHAT ═══ -->
+<div id="eilik-chat">
+  <div class="ec-header">
+    <div class="ec-avatar">
+      <svg viewBox="0 0 130 92" xmlns="http://www.w3.org/2000/svg">
+        <rect fill="#FFFFFF" stroke="#111111" stroke-width="2.5" x="8" y="6" width="114" height="78" rx="28"/>
+        <rect fill="rgba(255,255,255,.7)" x="16" y="10" width="98" height="14" rx="12"/>
+        <rect fill="rgba(17,17,17,0.1)" stroke="#111111" stroke-width="1.5" x="0" y="22" width="12" height="34" rx="6"/>
+        <rect fill="rgba(17,17,17,0.1)" stroke="#111111" stroke-width="1.5" x="118" y="22" width="12" height="34" rx="6"/>
+        <rect fill="rgba(17,17,17,0.1)" x="2" y="28" width="6" height="16" rx="3"/>
+        <rect fill="rgba(17,17,17,0.1)" x="122" y="28" width="6" height="16" rx="3"/>
+        <rect fill="#111111" stroke="#111111" stroke-width="2" x="18" y="16" width="94" height="58" rx="18"/>
+        <rect fill="none" stroke="rgba(255,255,255,.07)" stroke-width="1" x="20" y="18" width="90" height="54" rx="17"/>
+        <ellipse fill="rgba(255,255,255,.07)" cx="42" cy="43" rx="15" ry="17"/>
+        <rect fill="#FFFFFF" x="33" y="31" width="8" height="24" rx="4"/>
+        <rect fill="#FFFFFF" x="44" y="31" width="8" height="24" rx="4"/>
+        <circle fill="rgba(255,255,255,.55)" cx="36" cy="34" r="2"/>
+        <circle fill="rgba(255,255,255,.3)" cx="47" cy="34" r="1.5"/>
+        <ellipse fill="rgba(255,255,255,.07)" cx="88" cy="43" rx="15" ry="17"/>
+        <rect fill="#FFFFFF" x="79" y="31" width="8" height="24" rx="4"/>
+        <rect fill="#FFFFFF" x="90" y="31" width="8" height="24" rx="4"/>
+        <circle fill="rgba(255,255,255,.55)" cx="82" cy="34" r="2"/>
+        <circle fill="rgba(255,255,255,.3)" cx="93" cy="34" r="1.5"/>
+        <rect fill="rgba(255,255,255,.25)" x="48" y="62" width="34" height="3.5" rx="1.75"/>
+        <circle fill="#5C4633" cx="65" cy="6" r="5"/>
+        <circle fill="#B88A44" cx="65" cy="6" r="2.5"/>
+      </svg>
+    </div>
+    <div class="ec-title">
+      <strong>Eilik</strong>
+      <span>دستیار آنلاین</span>
+    </div>
+    <div class="ec-close" id="ew-close">×</div>
+  </div>
+  <div class="ec-messages" id="ew-msgs"></div>
+  <div class="ec-quick"    id="ew-quick"></div>
+  <div class="ec-input-row">
+    <input class="ec-input" id="ew-input" type="text" placeholder="سوالت رو بنویس...">
+    <button class="ec-send" id="ew-send">↑</button>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* ════════════════════════════════════════
+   KNOWLEDGE BASE — کامل و هوشمند
+════════════════════════════════════════ */
+
+/* ───── اطلاعات ثابت سایت ───── */
+const SITE = {
+  name:    'برازنده تن',
+  phone1:  '09121450815',
+  phone2:  '09101488815',
+  address: 'تهران، خیابان جمهوری، خیابان دانشگاه، پلاک ۶۰',
+  hours:   'شنبه تا پنجشنبه ۹ تا ۱۸',
+  urls: {
+    home:        '/',
+    products:    '/products/',
+    cart:        '/orders/cart/',
+    checkout:    '/orders/checkout/',
+    orders:      '/orders/',
+    profile:     '/accounts/profile/',
+    addresses:   '/accounts/addresses/',
+    wishlist:    '/products/wishlist/',
+    login:       '/accounts/login/',
+    faq:         '/support/faq/',
+    contact:     '/core/contact/',
+    about:       '/core/about/',
+    terms:       '/core/terms/',
+    ticket_new:  '/support/create/',
+    ticket_list: '/support/',
+    blog:        '/blog/',
+  }
+};
+
+const KB = [
+
+  /* ── احوال‌پرسی ── */
+  { q:['سلام','درود','هی','hello','hi','hey','صبح بخیر','شب بخیر','عصر بخیر'],
+    a:`سلام! خوش اومدی به ${SITE.name} 😊\nچطور می‌تونم کمکت کنم؟`,
+    quick:['نحوه خرید','راهنمای سایز','ارسال','پشتیبانی','تماس با ما'] },
+
+  { q:['خوبی','چطوری','حالت','چه خبر','چطوره'],
+    a:'ممنون، خوبم! همیشه آماده کمک هستم 🤖\nچیزی هست که بتونم کمک کنم؟',
+    quick:['محصولات','سفارش‌هام','تماس با ما'] },
+
+  { q:['ممنون','مرسی','تشکر','ممنونم','خوب بود','عالی بود','دستت درد نکنه'],
+    a:'خواهش می‌کنم! هر وقت سوالی داشتی اینجام 🙂',
+    quick:['محصولات','راهنمای خرید'] },
+
+  { q:['خداحافظ','بای','bye','مرسی خداحافظ','فعلاً'],
+    a:'خداحافظ! موفق باشی 👋 هر وقت برگشتی اینجام.',
+    quick:[] },
+
+  { q:['کمک','راهنما','help','چیکار','چه کاری میتونی','توانایی'],
+    a:`من دستیار هوشمند ${SITE.name} هستم 🤖\nمی‌تونم کمک کنم با:\n• 🛍️ راهنمای خرید\n• 📏 انتخاب سایز\n• 🚚 اطلاعات ارسال\n• 🔄 مرجوعی\n• 📍 پیگیری سفارش\n• 📞 اطلاعات تماس\n• 📜 قوانین سایت\nچی می‌خوای؟`,
+    quick:['نحوه خرید','ارسال','پشتیبانی','راهنمای سایز'] },
+
+  /* ── اطلاعات فروشگاه ── */
+  { q:['برازنده','درباره','about','کی هستید','شما کی','فروشگاه','معرفی'],
+    a:`${SITE.name} یه برند تخصصی پوشاک زنانه ایرانیه 👗\nفروش عمده: حضوری\nفروش تک: فقط آنلاین\n\n📍 ${SITE.address}\n📞 ${SITE.phone1}\n📞 ${SITE.phone2}`,
+    quick:['محصولات','تماس با ما','آدرس'] },
+
+  { q:['آدرس','کجاست','کجایید','محل'],
+    a:`📍 آدرس فروشگاه برازنده تن:\n${SITE.address}\n\n🕒 ساعت پاسخگویی: ${SITE.hours}`,
+    quick:['شماره تماس','پشتیبانی'] },
+
+  { q:['شماره','تلفن','تماس بگیرم','زنگ بزنم','phone','موبایل'],
+    a:`📞 شماره‌های تماس برازنده تن:\n• ${SITE.phone1}\n• ${SITE.phone2}\n\n🕒 ${SITE.hours}`,
+    quick:['ثبت تیکت','آدرس'] },
+
+  { q:['ساعت کاری','ساعت','چه وقت','کی جواب'],
+    a:`🕒 ساعت پاسخگویی: ${SITE.hours}\n📞 ${SITE.phone1}\n📞 ${SITE.phone2}`,
+    quick:['ثبت تیکت','تماس با ما'] },
+
+  /* ── محصولات ── */
+  { q:['محصول','محصولات','کالا','لباس','پوشاک','چی دارید','چی میفروشید','اجناس','کلکسیون'],
+    a:`فروشگاه ${SITE.name} تخصصی پوشاک زنانه 👗\n\nبرای دیدن همه محصولات:\n🔗 <a href="${SITE.urls.products}" style="color:#B88A44">صفحه محصولات</a>`,
+    quick:['راهنمای سایز','نحوه خرید','تخفیف‌ها'] },
+
+  { q:['جدید','تازه','جدیدترین','آخرین','new arrival'],
+    a:`محصولات جدید به‌صورت مداوم اضافه می‌شن.\n🔗 <a href="${SITE.urls.products}" style="color:#B88A44">محصولات جدید</a>`,
+    quick:['محصولات','تخفیف‌ها'] },
+
+  { q:['موجودی','موجوده','هست','داری','ناموجود','تمام شده'],
+    a:'موجودی هر محصول رو توی صفحه اون محصول می‌تونی ببینی.\nاگه «ناموجود» نشون داده شه، گزینه «اطلاع‌رسانی موجودی» رو فعال کن.',
+    quick:['محصولات','تماس با ما'] },
+
+  { q:['قیمت','چقدر','هزینه','ارزون','گرون','قیمت‌ها'],
+    a:'قیمت‌ها روی صفحه هر محصول به تومان نشون داده می‌شه و شامل مالیات هستن.',
+    quick:['کد تخفیف','نحوه خرید'] },
+
+  { q:['تخفیف','حراج','آف','off','sale','تخفیف‌ها','کمپین'],
+    a:'محصولات تخفیف‌دار با badge مشخصن.\nاگه کد کوپن داری توی سبد خرید وارد کن.',
+    quick:['کد تخفیف','نحوه خرید'] },
+
+  /* ── سبد خرید و خرید ── */
+  { q:['خرید','سبد','cart','چطور بخرم','نحوه خرید','افزودن به سبد','خرید کنم'],
+    a:`نحوه خرید:\n1️⃣ محصول رو انتخاب کن\n2️⃣ رنگ و سایز رو مشخص کن\n3️⃣ «افزودن به سبد» بزن\n4️⃣ «ادامه خرید» → تأیید قوانین → آدرس → روش ارسال → پرداخت\n\n🔗 <a href="${SITE.urls.cart}" style="color:#B88A44">سبد خرید</a>`,
+    quick:['پرداخت','ارسال','آدرس تحویل','کد تخفیف'] },
+
+  { q:['سبد خرید','سبدم','رفتن به سبد'],
+    a:`🔗 <a href="${SITE.urls.cart}" style="color:#B88A44">سبد خرید من</a>`,
+    quick:['نحوه خرید','پرداخت'] },
+
+  { q:['پرداخت','درگاه','آنلاین','کارت','شتاب','pay','پرداخت آنلاین'],
+    a:'پرداخت از طریق درگاه امن زرین‌پال:\n✅ تمام کارت‌های شتاب\n✅ SSL امن\n✅ اطلاعات بانکی ذخیره نمی‌شه\n✅ تأییدیه SMS بعد از پرداخت موفق',
+    quick:['ارسال','مرجوعی','پیگیری سفارش'] },
+
+  { q:['کد تخفیف','کوپن','coupon','تخفیف کد'],
+    a:'استفاده از کد تخفیف:\n1. برو به سبد خرید\n2. کادر «کد تخفیف دارید؟» رو پیدا کن\n3. کد رو وارد کن و «اعمال» بزن ✨',
+    quick:['نحوه خرید','سبد خرید'] },
+
+  /* ── ارسال ── */
+  { q:['ارسال','پست','حمل','تحویل','delivery','shipping','بسته','چطور میفرستید'],
+    a:`روش‌های ارسال:\n\n📦 تیپاکس (پیشنهادی): ۱-۳ روز کاری\n📮 پست پیشتاز: با هماهنگی پشتیبانی\n🛵 پیک موتوری: فقط تهران، با هماهنگی\n\nهزینه طبق تعرفه حمل‌ونقل، در زمان تحویل دریافت می‌شه.`,
+    quick:['پیگیری سفارش','مرجوعی','تماس با ما'] },
+
+  { q:['چقدر طول میکشه','مدت ارسال','کِی میرسه','زمان تحویل'],
+    a:'زمان تحویل:\n🏙️ شهرهای بزرگ: ۲۴-۷۲ ساعت کاری\n🏘️ شهرستان‌ها: حداکثر ۱ هفته\n🗺️ مناطق دورافتاده: حداکثر ۱۰ روز',
+    quick:['پیگیری سفارش','تماس با ما'] },
+
+  { q:['هزینه ارسال','قیمت ارسال','ارسال رایگان'],
+    a:'هزینه ارسال در صفحه تسویه حساب نشون داده می‌شه و در زمان تحویل دریافت می‌شه.',
+    quick:['ارسال','نحوه خرید'] },
+
+  { q:['پیگیری','track','کجاست','سفارشم','رهگیری','کد رهگیری'],
+    a:`پیگیری سفارش:\n📱 کد رهگیری بعد از ارسال SMS می‌شه\n\n🔗 <a href="${SITE.urls.orders}" style="color:#B88A44">سفارش‌هام</a>`,
+    quick:['حساب کاربری','تماس با ما'] },
+
+  /* ── آدرس تحویل ── */
+  { q:['آدرس تحویل','آدرس سفارش','آدرس جدید','ثبت آدرس','اضافه کردن آدرس','تغییر آدرس','آدرس اضافه'],
+    a:`مدیریت آدرس‌ها:\n1. وارد حساب کاربری بشو\n2. منو → «آدرس‌های من»\n3. «افزودن آدرس جدید» رو بزن\n\n🔗 <a href="${SITE.urls.addresses}" style="color:#B88A44">آدرس‌های من</a>`,
+    quick:['نحوه خرید','حساب کاربری'] },
+
+  /* ── سایزبندی ── */
+  { q:['سایز','سایزبندی','اندازه','راهنمای سایز','چه سایزی','فری سایز','اندازه‌گیری'],
+    a:`راهنمای سایز:\n\n👗 لباس:\nS=۳۶-۳۸ | M=۳۸-۴۰ | L=۴۰-۴۲ | XL=۴۲-۴۴ | XXL=۴۴-۴۶\n\nمدل‌های عکس‌ها: قد ۱۷۵cm، سایز ۳۸-۴۰\n\n💡 بین دو سایز؟ سایز بزرگتر رو بگیر!`,
+    quick:['محصولات','مرجوعی','تماس با ما'] },
+
+  { q:['قد مدل','مدل سایز','مانکن'],
+    a:'مدل‌های عکس‌ها:\n📏 قد: ۱۷۵ سانتی‌متر\n👗 سایز: ۳۸ تا ۴۰',
+    quick:['راهنمای سایز','محصولات'] },
+
+  /* ── مرجوعی ── */
+  { q:['مرجوع','برگشت','عودت','تعویض','return','refund','پس دادن','برگردونم'],
+    a:`سیاست مرجوعی:\n✅ مهلت: ۴۸ ساعت پس از دریافت\n✅ دلایل قابل قبول: ایراد فنی یا ارسال اشتباه\n❌ دلایل رد: سلیقه‌ای یا اختلاف جزئی رنگ\n\nشرایط کالا: برچسب دست‌نخورده، نشسته، بدون بو\n\n📞 تماس: ${SITE.phone1}`,
+    quick:['تماس با ما','ثبت تیکت','شماره تماس'] },
+
+  { q:['استرداد وجه','برگشت پول','پول پس'],
+    a:'استرداد وجه:\nحداکثر ۷۲ ساعت کاری پس از تأیید، به همان حساب مبدأ برمیگرده.',
+    quick:['مرجوعی','تماس با ما'] },
+
+  /* ── لغو سفارش ── */
+  { q:['لغو سفارش','کنسل','cancel','انصراف','لغو کنم'],
+    a:`لغو سفارش:\n✅ قبل از تحویل به حمل‌ونقل → لغو ممکنه، وجه ۷۲ ساعته برمیگرده\n❌ بعد از تحویل → فقط از طریق مرجوعی\n\n📞 تماس: ${SITE.phone1}`,
+    quick:['مرجوعی','شماره تماس'] },
+
+  /* ── حساب کاربری ── */
+  { q:['حساب','ثبت نام','لاگین','login','ورود','پروفایل','اکانت','signup'],
+    a:`ورود:\n📱 شماره موبایل → کد OTP → ورود (بدون رمز!)\n\nاز پروفایل می‌تونی مدیریت کنی:\n• سفارش‌ها | آدرس‌ها | ویشلیست | تیکت‌ها\n\n🔗 <a href="${SITE.urls.login}" style="color:#B88A44">ورود / ثبت‌نام</a>`,
+    quick:['سفارش‌هام','آدرس‌هام','ویشلیست'] },
+
+  { q:['سفارش‌هام','سفارشاتم','orders','تاریخچه سفارش'],
+    a:`🔗 <a href="${SITE.urls.orders}" style="color:#B88A44">سفارش‌هام</a>`,
+    quick:['پیگیری سفارش','تماس با ما'] },
+
+  { q:['آدرس‌هام','مدیریت آدرس','حذف آدرس'],
+    a:`🔗 <a href="${SITE.urls.addresses}" style="color:#B88A44">آدرس‌های من</a>`,
+    quick:['اضافه کردن آدرس','نحوه خرید'] },
+
+  { q:['ویشلیست','علاقه‌مندی','wishlist','لیست علاقه'],
+    a:`روی ❤️ توی صفحه محصول بزن تا ذخیره بشه.\n\n🔗 <a href="${SITE.urls.wishlist}" style="color:#B88A44">علاقه‌مندی‌هام</a>`,
+    quick:['محصولات','حساب کاربری'] },
+
+  /* ── پشتیبانی و تیکت ── */
+  { q:['پشتیبانی','support','کمک بگیرم','مشکل دارم'],
+    a:`پشتیبانی ${SITE.name}:\n\n📞 ${SITE.phone1}\n📞 ${SITE.phone2}\n🕒 ${SITE.hours}\n\n💬 تیکت آنلاین:\n🔗 <a href="${SITE.urls.ticket_new}" style="color:#B88A44">ثبت تیکت</a>`,
+    quick:['ثبت تیکت','سوالات متداول','آدرس'] },
+
+  { q:['تیکت','ticket','ارسال تیکت','پیام بدم'],
+    a:`ثبت تیکت:\n1. وارد حساب کاربری بشو\n2. موضوع و توضیحات رو بنویس\n3. ظرف ۲۴ ساعت کاری جواب می‌گیری\n\n🔗 <a href="${SITE.urls.ticket_new}" style="color:#B88A44">ثبت تیکت جدید</a>\n🔗 <a href="${SITE.urls.ticket_list}" style="color:#B88A44">تیکت‌های من</a>`,
+    quick:['پشتیبانی','شماره تماس'] },
+
+  { q:['تیکت‌هام','وضعیت تیکت','جواب تیکت'],
+    a:`🔗 <a href="${SITE.urls.ticket_list}" style="color:#B88A44">تیکت‌های من</a>`,
+    quick:['ثبت تیکت','پشتیبانی'] },
+
+  { q:['تماس با ما','contact','صفحه تماس'],
+    a:`📞 ${SITE.phone1}\n📞 ${SITE.phone2}\n📍 ${SITE.address}\n\n🔗 <a href="${SITE.urls.contact}" style="color:#B88A44">صفحه تماس</a>`,
+    quick:['ثبت تیکت','شماره تماس'] },
+
+  { q:['سوالات متداول','faq','پرسش‌های متداول'],
+    a:`🔗 <a href="${SITE.urls.faq}" style="color:#B88A44">سوالات متداول</a>`,
+    quick:['پشتیبانی','تماس با ما'] },
+
+  /* ── قوانین ── */
+  { q:['قوانین','مقررات','terms','شرایط','حریم خصوصی'],
+    a:`🔗 <a href="${SITE.urls.terms}" style="color:#B88A44">قوانین و مقررات</a>\n\nخلاصه:\n• مرجوعی: ۴۸ ساعت در صورت عیب فنی\n• اطلاعات بانکی ذخیره نمی‌شه\n• اختلاف جزئی رنگ عیب محسوب نمی‌شه`,
+    quick:['مرجوعی','پرداخت'] },
+
+  /* ── بلاگ ── */
+  { q:['بلاگ','مقاله','مطلب','blog','مجله فشن'],
+    a:`🔗 <a href="${SITE.urls.blog}" style="color:#B88A44">بلاگ برازنده تن</a>`,
+    quick:['محصولات'] },
+
+  /* ── AR ── */
+  { q:['ar','پرو مجازی','واقعیت افزوده','try on'],
+    a:'قابلیت پرو مجازی AR داریم 🎭\nتوی صفحه بعضی محصولات دکمه «پرو مجازی» می‌بینی.',
+    quick:['محصولات'] },
+
+  /* ── تأیید سفارش ── */
+  { q:['تأیید سفارش','پیامک نگرفتم','کد سفارش'],
+    a:`بعد از پرداخت موفق SMS می‌آد.\nاگه نگرفتی و پول کسر شد، ۷۲ ساعت صبر کن یا تماس بگیر:\n📞 ${SITE.phone1}`,
+    quick:['پیگیری سفارش','شماره تماس'] },
+
+];
+
+const FB = [
+  `این سوال رو دقیقاً نمی‌دونم 🤔\nتماس: 📞 ${SITE.phone1}`,
+  `متأسفم، جوابش رو ندارم.\n🔗 <a href="${SITE.urls.ticket_new}" style="color:#B88A44">ثبت تیکت</a> یا 📞 ${SITE.phone1}`,
+  `سوال جالبیه ولی جوابش رو ندارم 😅\nتیم پشتیبانی کمک می‌کنه:\n📞 ${SITE.phone1} | ${SITE.phone2}`,
+];
+/* ════════════════════════════════════════════════
+   EILIK ENGINE v2 — فاز ۱+۲+۳
+   ════════════════════════════════════════════════ */
+
+/* Synonym Map */
+const SYNONYMS = {
+  'كي ميرسه':'ارسال','كِي ميرسه':'ارسال','چقدر طول ميكشه':'ارسال',
+  'چقدر طول میکشه':'ارسال','تحويل':'ارسال','delivery':'ارسال','shipping':'ارسال',
+  'مرجوع':'برگشت','مرجوعي':'برگشت','مرجوعی':'برگشت',
+  'پس گرفتن':'برگشت','پس دادن':'برگشت','عودت':'برگشت','return':'برگشت',
+  'برگردونم':'برگشت','پسش بدم':'برگشت',
+  'كنسل':'لغو','کنسل':'لغو','انصراف':'لغو','cancel':'لغو','نميخوام':'لغو','نمیخوام':'لغو',
+  'پيگيري':'رهگیری','پیگیری':'رهگیری','كجاست':'رهگیری','کجاست':'رهگیری',
+  'tracking':'رهگیری','كد رهگيري':'رهگیری','کد رهگیری':'رهگیری',
+  'گرونه':'قیمت','گرون':'قیمت','ارزون':'قیمت','چنده':'قیمت','price':'قیمت',
+  'كد تخفيف':'تخفیف','کد تخفیف':'تخفیف','voucher':'تخفیف','discount':'تخفیف','coupon':'تخفیف',
+  'واريز':'پرداخت','کارت به کارت':'پرداخت','payment':'پرداخت','درگاه':'پرداخت',
+  'سايزبندي':'راهنمای سایز','سایزبندی':'راهنمای سایز','اندازه':'راهنمای سایز',
+  'size':'راهنمای سایز','سايزم':'راهنمای سایز','سایزم':'راهنمای سایز',
+  'زنگ بزنم':'تماس','تلفن':'تماس','contact':'تماس',
+  'چطور بخرم':'نحوه خرید','order':'سفارش','خريد كنم':'نحوه خرید','خرید کنم':'نحوه خرید',
+  'موجوده':'موجودی','stock':'موجودی','تموم شده':'موجودی','ناموجوده':'موجودی',
+};
+
+function normalizeText(raw) {
+  let s = raw.trim().toLowerCase()
+    .replace(/ي/g,'ی').replace(/ك/g,'ک').replace(/‌/g,' ').replace(/\s+/g,' ').trim();
+  const sorted = Object.keys(SYNONYMS).sort((a,b) => b.length - a.length);
+  for (const phrase of sorted) {
+    if (s.includes(phrase.toLowerCase()))
+      s = s.replaceAll(phrase.toLowerCase(), SYNONYMS[phrase].toLowerCase());
+  }
+  return s;
+}
+
+function levenshtein(a, b) {
+  if (a===b) return 0;
+  if (!a.length) return b.length;
+  if (!b.length) return a.length;
+  if (a.length > b.length) { const t=a; a=b; b=t; }
+  let row = Array.from({length: a.length+1}, (_,i) => i);
+  for (const c of b) {
+    let prev = row[0]+1, newRow = [prev];
+    for (let i=1; i<=a.length; i++) {
+      const val = Math.min(newRow[i-1]+1, row[i]+1, row[i-1]+(c!==a[i-1]));
+      newRow.push(val); prev = val;
+    }
+    row = newRow;
+  }
+  return row[a.length];
+}
+
+function scoreEntry(qNorm, qWords, entry) {
+  let best = 0;
+  for (const kw of (entry.q||[])) {
+    const kn = kw.trim().toLowerCase();
+    if (!kn) continue;
+    const kl = kn.length;
+    if (qNorm.includes(kn)) { best = Math.max(best, kl); continue; }
+    const wm = qWords.filter(w => w.length>1 && kn.includes(w)).length;
+    if (wm) { best = Math.max(best, kl*(wm/Math.max(kn.split(' ').length,1))*0.6); continue; }
+    for (const w of qWords)
+      if (w.length>=4 && kn.length>=4 && levenshtein(w,kn)<=1)
+        best = Math.max(best, kl*0.4);
+  }
+  return best;
+}
+
+/* فاز ۳ — حافظه مکالمه */
+const FOLLOWUP = ['چطور','چطوره','بیشتر توضیح','توضیح بده','یعنی چی','منظورت',
+  'مثلاً','مثلا','چند روز','چند وقت','دقیقاً','بعدش','اونوقت','همون','more','explain'];
+const RESET_SIG = ['سلام','درود','hello','hi','یه سوال دیگه'];
+
+let _history   = [];   // [{role,content,matchedId}]
+let _sessionId = 'eil_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2,7);
+let _serverKB  = null;
+
+/* بارگذاری KB از سرور */
+fetch('/api/eilik/kb/')
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(data => { if (Array.isArray(data) && data.length) _serverKB = data; })
+  .catch(() => {});
+
+function isFollowUp(qNorm) {
+  if (!_history.length) return false;
+  if (RESET_SIG.some(s => qNorm.includes(s.toLowerCase()))) return false;
+  if (FOLLOWUP.some(s => qNorm.includes(s.toLowerCase()))) return true;
+  if (qNorm.trim().length < 4 && _history.slice().reverse().find(t => t.role==='bot' && t.matchedId)) return true;
+  return false;
+}
+
+function getLastEntry(activeKB) {
+  for (let i=_history.length-1; i>=0; i--) {
+    const t = _history[i];
+    if (t.role==='bot' && t.matchedId) return activeKB.find(e => e.id===t.matchedId)||null;
+  }
+  return null;
+}
+
+function find(txt) {
+  const activeKB = _serverKB || KB;
+  const qNorm  = normalizeText(txt);
+  const qWords = qNorm.split(/\s+/).filter(w=>w);
+
+  /* فاز ۳ */
+  if (isFollowUp(qNorm)) {
+    const last = getLastEntry(activeKB);
+    if (last) return { entry: last, isCtx: true };
+  }
+
+  /* امتیازدهی */
+  let bestScore=0, bestEntry=null;
+  for (const e of activeKB) {
+    const s = scoreEntry(qNorm, qWords, e);
+    if (s > bestScore) { bestScore=s; bestEntry=e; }
+  }
+  return bestScore >= 1.5 ? { entry: bestEntry, isCtx: false } : null;
+}
+
+/* لاگ به سرور */
+function getCsrf() {
+  const c = document.cookie.split(';').map(c=>c.trim()).find(c=>c.startsWith('csrftoken='));
+  return c ? c.split('=')[1] : '';
+}
+function logChat(userMsg, botAnswer, matchedId, isFallback) {
+  fetch('/api/eilik/chat/', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json', 'X-CSRFToken': getCsrf()},
+    body: JSON.stringify({
+      message: userMsg, session_id: _sessionId,
+      history: _history.slice(-10).map(t=>({role:t.role,content:t.content,matched_id:t.matchedId||null})),
+    }),
+  }).catch(()=>{});
+}
+
+
+/* ════════════ DOM ════════════ */
+const wrap     = document.getElementById('eilik-wrap');
+const bot      = document.getElementById('eilik-svg');
+const bubble   = document.getElementById('eilik-bubble');
+const chat     = document.getElementById('eilik-chat');
+const msgs     = document.getElementById('ew-msgs');
+const quickEl  = document.getElementById('ew-quick');
+const inp      = document.getElementById('ew-input');
+const sendBtn  = document.getElementById('ew-send');
+const closeBtn = document.getElementById('ew-close');
+const eyeL     = document.getElementById('ew-eye-l');
+const eyeR     = document.getElementById('ew-eye-r');
+const lbars    = document.getElementById('ew-lbars');
+const rbars    = document.getElementById('ew-rbars');
+const lheart   = document.getElementById('ew-lh');
+const rheart   = document.getElementById('ew-rh');
+
+let chatOpen = false, heartMode = false, state = 'hidden';
+
+/* ════════════ STATE MACHINE ════════════ */
+function setState(s, txt) {
+  state = s;
+  wrap.classList.remove('state-hidden','state-peek','state-full');
+  wrap.classList.add('state-' + s);
+  bubble.classList.remove('show');
+  if (txt) {
+    bubble.textContent = txt;
+    setTimeout(() => bubble.classList.add('show'), 60);
+  }
+}
+
+/* schedule appearances */
+const sched = [
+  { d: 4000,  t: 'سوالی داری؟ 😊' },
+  { d: 20000, t: null },
+  { d: 30000, t: null },
+];
+let si = 0;
+function runSched() {
+  if (si >= sched.length) return;
+  const item = sched[si++];
+  setTimeout(() => {
+    if (!chatOpen) {
+      setState('peek', item.t);
+      setTimeout(() => { if (state === 'peek' && !chatOpen) setState('hidden'); },
+        item.t ? 6000 : 3000);
+    }
+    runSched();
+  }, item.d);
+}
+runSched();
+
+/* ════════════ CLICK LOGIC ════════════ */
+wrap.addEventListener('click', () => {
+  if (chatOpen) return;
+  if (state === 'hidden') {
+    setState('peek', 'سلام! چطور کمک کنم؟ 😊');
+    return;
+  }
+  if (state === 'peek' || state === 'full') {
+    openChat();
+  }
+});
+
+bubble.addEventListener('click', e => {
+  e.stopPropagation();
+  if (bubble.classList.contains('show')) openChat();
+});
+
+/* ════════════ EYE FOLLOW ════════════ */
+function faceC() {
+  const r = bot.getBoundingClientRect();
+  return { x: r.left + r.width * .5, y: r.top + r.height * .28 };
+}
+function moveEyes(tx, ty) {
+  if (heartMode) return;
+  const c = faceC(), dx = tx - c.x, dy = ty - c.y;
+  const len = Math.sqrt(dx*dx + dy*dy) || 1;
+  const ox = (dx/len) * Math.min(3.5, len*.022);
+  const oy = (dy/len) * Math.min(3,   len*.018);
+  eyeL.setAttribute('transform', `translate(${ox},${oy})`);
+  eyeR.setAttribute('transform', `translate(${ox},${oy})`);
+  lheart.setAttribute('transform', `translate(${ox},${oy})`);
+  rheart.setAttribute('transform', `translate(${ox},${oy})`);
+}
+document.addEventListener('mousemove', e => moveEyes(e.clientX, e.clientY));
+document.addEventListener('touchmove', e => {
+  const t = e.touches[0]; moveEyes(t.clientX, t.clientY);
+}, { passive: true });
+document.addEventListener('touchstart', e => {
+  const t = e.touches[0]; moveEyes(t.clientX, t.clientY);
+}, { passive: true });
+
+/* ════════════ HEART ════════════ */
+function setHeart(on) {
+  heartMode = on;
+  bot.classList.toggle('heart-mode', on);
+  bot.style.filter = on
+    ? 'drop-shadow(0 8px 22px rgba(178,58,74,.28))'
+    : 'drop-shadow(0 6px 18px rgba(17,17,17,.13))';
+}
+
+/* ════════════ BLINK ════════════ */
+function blink() {
+  if (heartMode) return;
+  [lbars, rbars].forEach(g => {
+    g.style.transform = 'scaleY(0.06)';
+    g.style.transformOrigin = 'center 37px';
+  });
+  setTimeout(() => [lbars, rbars].forEach(g => g.style.transform = 'scaleY(1)'), 110);
+}
+(function sb() { setTimeout(() => { blink(); sb(); }, 2400 + Math.random()*3000); })();
+
+/* ════════════ HEART TRIGGERS ════════════ */
+function attachHeartTrigger(selector, duration) {
+  duration = duration || 1200;
+  document.addEventListener('click', e => {
+    if (e.target.closest(selector)) {
+      setHeart(true);
+      setTimeout(() => setHeart(false), duration);
+    }
+  });
+  document.addEventListener('touchstart', e => {
+    if (e.target.closest(selector)) {
+      setHeart(true);
+      setTimeout(() => setHeart(false), duration);
+    }
+  }, { passive: true });
+}
+
+attachHeartTrigger('.checkout-btn', 1400);
+attachHeartTrigger('.add-to-cart-main', 1400);
+document.addEventListener('mouseover', e => {
+  if (e.target.closest('.product-card')) { setHeart(true); }
+});
+document.addEventListener('mouseout', e => {
+  if (e.target.closest('.product-card')) { setHeart(false); }
+});
+document.addEventListener('touchstart', e => {
+  if (e.target.closest('.product-card')) {
+    setHeart(true); setTimeout(() => setHeart(false), 800);
+  }
+}, { passive: true });
+
+/* ════════════ GLOBAL API ════════════ */
+window.eilikOpen  = function() { setHeart(true); setTimeout(() => { setHeart(false); openChat(); }, 500); };
+window.eilikHeart = setHeart;
+
+/* ════════════ LOGIN PAGE API ════════════ */
+const lbars2 = document.getElementById('ew-lbars');
+const rbars2 = document.getElementById('ew-rbars');
+
+// دست‌های ربات — گروه‌های SVG با pivot روی شانه (مثل نسخه قدیمی)
+let _armL = null, _armR = null;
+function _ensureArms() {
+  if (_armL) return;
+  _armL = document.getElementById('ew-arm-l');
+  _armR = document.getElementById('ew-arm-r');
+}
+
+function _showCoverArms(on) {
+  _ensureArms();
+  if (!_armL || !_armR) return;
+  _armL.style.transform = on ? 'rotate(216deg)'  : 'rotate(0deg)';
+  _armR.style.transform = on ? 'rotate(-216deg)' : 'rotate(0deg)';
+}
+
+window.eilikLoginPhoneTyping = function(hasInput) {
+  if (state === 'hidden') setState('peek');
+  setHeart(hasInput);
+  if (hasInput) {
+    bubble.textContent = 'یاهو! 💕';
+    bubble.classList.add('show');
+  } else {
+    bubble.classList.remove('show');
+  }
+};
+
+window.eilikLoginVerifying = function(isTyping) {
+  if (state === 'hidden') setState('peek');
+  setHeart(false);
+  _showCoverArms(isTyping);
+  if (lbars2 && rbars2) {
+    const scale = isTyping ? 'scaleY(0.05)' : 'scaleY(1)';
+    lbars2.style.transform = scale;
+    lbars2.style.transformOrigin = 'center 37px';
+    rbars2.style.transform = scale;
+    rbars2.style.transformOrigin = 'center 37px';
+  }
+  if (isTyping) {
+    bubble.textContent = 'نگاه نمی‌کنم! 🙈';
+    bubble.classList.add('show');
+  } else {
+    bubble.classList.remove('show');
+  }
+};
+
+window.eilikLoginDone = function() {
+  setHeart(true);
+  _showCoverArms(false);
+  if (lbars2 && rbars2) {
+    lbars2.style.transform = 'scaleY(1)';
+    rbars2.style.transform = 'scaleY(1)';
+  }
+  bubble.textContent = 'خوش اومدی! 🎉';
+  bubble.classList.add('show');
+  setTimeout(() => {
+    setHeart(false);
+    bubble.classList.remove('show');
+    setState('hidden');
+  }, 2500);
+};
+
+/* ════════════ CHAT ════════════ */
+function openChat() {
+  chatOpen = true;
+  chat.classList.add('open');
+  setState('hidden');
+  setHeart(true);
+  setTimeout(() => setHeart(false), 1200);
+  if (msgs.children.length === 0)
+    setTimeout(() => addBot(
+      'سلام! 👋 من Eilik هستم، دستیار هوشمند برازنده.\nچطور می‌تونم کمکت کنم؟',
+      ['محصولات', 'نحوه خرید', 'ارسال', 'راهنمای سایز', 'پشتیبانی']
+    ), 300);
+  setTimeout(() => inp.focus(), 420);
+}
+
+closeBtn.addEventListener('click', () => { chatOpen = false; chat.classList.remove('open'); });
+
+function addMsg(txt, cls) {
+  const el = document.createElement('div');
+  el.className = 'ec-msg ' + cls;
+  el.innerHTML = txt.replace(/\n/g, '<br>');
+  msgs.appendChild(el);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+function addBot(txt, q) { addMsg(txt, 'bot'); if (q && q.length) showQ(q); }
+function showTyping() {
+  const t = document.createElement('div');
+  t.className = 'ec-typing'; t.id = 'ew-typing';
+  t.innerHTML = '<span></span><span></span><span></span>';
+  msgs.appendChild(t); msgs.scrollTop = msgs.scrollHeight;
+}
+function hideTyping() { const t = document.getElementById('ew-typing'); if (t) t.remove(); }
+function showQ(items) {
+  quickEl.innerHTML = '';
+  items.forEach(l => {
+    const b = document.createElement('button');
+    b.className = 'ec-qbtn'; b.textContent = l;
+    b.onclick = () => { quickEl.innerHTML = ''; handle(l); };
+    quickEl.appendChild(b);
+  });
+}
+
+function handle(txt) {
+  if (!txt.trim()) return;
+  addMsg(txt, 'user'); inp.value = ''; quickEl.innerHTML = '';
+  showTyping();
+  setTimeout(() => {
+    hideTyping();
+    const result = find(txt);
+    let answer, quick, matchedId, isFallback;
+    if (result) {
+      answer     = result.entry.a;
+      quick      = result.entry.quick || [];
+      matchedId  = result.entry.id || null;
+      isFallback = false;
+      if (result.isCtx) answer = '📌 <em style="font-size:11px;opacity:.6">ادامه همون سوال:</em>\n' + answer;
+    } else {
+      answer     = FB[Math.floor(Math.random() * FB.length)];
+      quick      = ['تماس با ما','ثبت تیکت'];
+      matchedId  = null;
+      isFallback = true;
+    }
+    addBot(answer, quick);
+    _history.push({role:'user',  content:txt,    matchedId:null});
+    _history.push({role:'bot',   content:answer, matchedId:matchedId});
+    if (_history.length > 20) _history = _history.slice(-20);
+    logChat(txt, answer, matchedId, isFallback);
+  }, 700 + Math.random() * 400);
+}
+
+sendBtn.onclick = () => handle(inp.value);
+inp.onkeydown   = e => { if (e.key === 'Enter') handle(inp.value); };
+
+/* idle look-around */
+setInterval(() => {
+  if (heartMode) return;
+  const rx = 65 + (Math.random() - .5) * window.innerWidth * .7;
+  const ry = window.innerHeight * (.2 + Math.random() * .5);
+  moveEyes(rx, ry);
+  setTimeout(() => moveEyes(window.innerWidth / 2, 0), 900);
+}, 5500 + Math.random() * 3000);
+
+})();
+</script>
+</body>
+</html>
