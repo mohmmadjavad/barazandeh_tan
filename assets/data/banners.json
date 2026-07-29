@@ -1,0 +1,7 @@
+{
+  "banners": [
+    {"image": "assets/images/banner-1.svg", "link": "products.html"},
+    {"image": "assets/images/banner-2.svg", "link": "products.html?category=underwear"},
+    {"image": "assets/images/banner-3.svg", "link": "products.html?category=loungewear"}
+  ]
+}
