@@ -1,0 +1,10 @@
+{
+  "banners": [
+    { "image": "assets/banner/banner-1.webp", "link": "products.html" },
+    { "image": "assets/banner/banner-2.webp", "link": "products.html" },
+    { "image": "assets/banner/banner-3.webp", "link": "products.html" },
+    { "image": "assets/banner/banner-4.webp", "link": "products.html" },
+    { "image": "assets/banner/banner-5.webp", "link": "products.html" },
+    { "image": "assets/banner/banner-6.webp", "link": "products.html" }
+  ]
+}
