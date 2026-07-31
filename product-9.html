@@ -8,7 +8,7 @@
     <link rel="manifest" href="assets/logo/icon/site.webmanifest">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>تیشرت بندی تابستانی</title>
+    <title>پیراهن آستین بلند طرح رز</title>
     <style>
         /* ========== تعریف فونت فر دینار ========== */
         @font-face {
@@ -130,6 +130,42 @@
 
         .mobile-search-toggle:hover {
             background: rgba(255,255,255,0.75);
+        }
+
+        /* جستجو — جزیره‌ی دوم */
+        .header-back-btn {
+            background: rgba(255,255,255,0.62);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.7);
+            box-shadow: 0 6px 24px rgba(17,17,17,0.07);
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #111111;
+            flex-shrink: 0;
+        }
+
+        .header-back-btn:hover {
+            background: rgba(255,255,255,0.75);
+        }
+
+        .header-back-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* جستجو — جزیره‌ی دوم */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
         }
 
         /* جستجو — جزیره‌ی دوم */
@@ -296,6 +332,79 @@
             transition: color 0.25s ease;
         }
 
+        /* === نوار افزودن به سبد خرید که جایگزین منوی پایین می‌شود === */
+        .cart-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            width: 100%;
+            height: 44px;
+        }
+
+        .cart-bar-price {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            line-height: 1.1;
+        }
+
+        .cart-bar-price-value,
+        .cart-bar-discount-price {
+            font-size: 14px;
+            font-weight: 800;
+            color: #5C4633;
+            white-space: nowrap;
+        }
+
+        .cart-bar-old-price {
+            font-size: 10px;
+            color: rgba(17,17,17,0.4);
+            text-decoration: line-through;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .cart-bar-btn {
+            flex: 1;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #5C4633 0%, #B23A4A 100%);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 22px;
+            padding: 0 20px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Far Dinar Two', sans-serif;
+            letter-spacing: 0.3px;
+            box-shadow: 0 4px 15px rgba(92,70,51,0.35);
+        }
+
+        .cart-bar-btn:active {
+            transform: scale(0.98);
+        }
+
+        .cart-bar-btn .cart-bar-btn-icon {
+            font-size: 16px;
+        }
+
+        @media (max-width: 767px) {
+            .cart-bar { height: 38px; }
+            .cart-bar-btn { padding: 0 14px; font-size: 12px; }
+            .cart-bar-btn .cart-bar-btn-icon { font-size: 14px; }
+            .cart-bar-price-value, .cart-bar-discount-price { font-size: 12px; }
+            .cart-bar-old-price { font-size: 9px; }
+        }
+
         /* ========== فوتر ========== */
         .footer {
             background: #FFFFFF;
@@ -458,6 +567,18 @@
             }
             
             /* کادر جستجو در موبایل */
+            /* دکمه بازگشت در موبایل */
+            .header-back-btn {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .header-back-btn svg {
+                width: 16px;
+                height: 16px;
+            }
+            
+            /* کادر جستجو در موبایل */
             .search-form {
                 position: absolute;
                 left: 0;
@@ -529,6 +650,16 @@
             .search-wrapper button svg {
                 width: 18px;
                 height: 18px;
+            }
+            
+            .header-back-btn {
+                width: 54px;
+                height: 54px;
+            }
+            
+            .header-back-btn svg {
+                width: 24px;
+                height: 24px;
             }
             
             .bottom-nav {
@@ -2034,34 +2165,44 @@
                     <div class="brand-name">براز<span>نده</span></div>
                 </a>
                 
-                <!-- فرم جستجو -->
-                <form class="search-form header-island" method="get" action="products.html" id="searchForm">
-                    <div class="search-wrapper">
-                        <input type="text" 
-                               name="name" 
-                               placeholder="جستجوی محصول..." 
-                               autocomplete="off" 
-                               value=""
-                               id="searchInput">
-                        <button type="submit" aria-label="جستجو">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                        </button>
-                    </div>
-                </form>
-                
-                <!-- دکمه جستجو برای موبایل -->
-                <button class="mobile-search-toggle" id="mobileSearchToggle" aria-label="جستجو">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </button>
-                
-                <!-- دکمه بستن جستجو -->
-                <button class="close-search-btn" id="closeSearchBtn" aria-label="بستن جستجو">✕</button>
+                <!-- گروه سمت چپ هدر: جستجو و دکمه بازگشت، چسبیده به هم -->
+                <div class="header-actions">
+                    <!-- فرم جستجو -->
+                    <form class="search-form header-island" method="get" action="products.html" id="searchForm">
+                        <div class="search-wrapper">
+                            <input type="text" 
+                                   name="name" 
+                                   placeholder="جستجوی محصول..." 
+                                   autocomplete="off" 
+                                   value=""
+                                   id="searchInput">
+                            <button type="submit" aria-label="جستجو">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- دکمه جستجو برای موبایل -->
+                    <button class="mobile-search-toggle" id="mobileSearchToggle" aria-label="جستجو">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                    
+                    <!-- دکمه بستن جستجو -->
+                    <button class="close-search-btn" id="closeSearchBtn" aria-label="بستن جستجو">✕</button>
+
+                    <!-- دکمه بازگشت به صفحه قبل -->
+                    <button type="button" class="header-back-btn" id="headerBackBtn" onclick="history.back()" aria-label="بازگشت به صفحه قبل" title="بازگشت به صفحه قبل">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -2073,8 +2214,8 @@
 <div class="container">
     <div class="product-detail">
         <div class="product-gallery">
-            <div class="main-image-wrap" id="mainImageWrap" onclick="openGallery(0)">
-                <img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&amp;fit=crop&amp;w=900&amp;h=900&amp;q=80" alt="تیشرت بندی تابستانی" id="mainImage" style="width:100%; border-radius:28px; display:block;">
+                        <div class="main-image-wrap" id="mainImageWrap" onclick="openGallery(0)">
+                <img src="assets/products/dress-rose-long-sleeve/1.webp" alt="پیراهن آستین بلند طرح رز" id="mainImage" style="width:100%; border-radius:28px; display:block;">
                 <div class="click-hint">🔍 برای بزرگنمایی کلیک کنید</div>
 
                 <div class="gallery-float-actions" onclick="event.stopPropagation();">
@@ -2106,23 +2247,11 @@
             </div>
             <div class="thumbnail-list">
                 <div class="thumbnail-item active" data-index="0" onclick="openGallery(0); event.stopPropagation();">
-                    <img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&amp;fit=crop&amp;w=900&amp;h=900&amp;q=80" alt="تیشرت بندی تابستانی">
+                    <img src="assets/products/dress-rose-long-sleeve/1.webp" alt="پیراهن آستین بلند طرح رز">
                 </div>
                 
                 <div class="thumbnail-item" data-index="1" onclick="openGallery(1); event.stopPropagation();">
-                    <img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&amp;fit=crop&amp;w=900&amp;h=900&amp;q=80" alt="تیشرت بندی تابستانی">
-                </div>
-                
-                <div class="thumbnail-item" data-index="2" onclick="openGallery(2); event.stopPropagation();">
-                    <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&amp;fit=crop&amp;w=900&amp;h=900&amp;q=80" alt="تیشرت بندی تابستانی">
-                </div>
-                
-                <div class="thumbnail-item" data-index="3" onclick="openGallery(3); event.stopPropagation();">
-                    <img src="https://images.unsplash.com/photo-1620799139507-2a76f79a2f4d?auto=format&amp;fit=crop&amp;w=900&amp;h=900&amp;q=80" alt="تیشرت بندی تابستانی">
-                </div>
-                
-                <div class="thumbnail-item" data-index="4" onclick="openGallery(4); event.stopPropagation();">
-                    <img src="https://images.unsplash.com/photo-1716951923523-0c76b14d4852?auto=format&amp;fit=crop&amp;w=900&amp;h=900&amp;q=80" alt="تیشرت بندی تابستانی">
+                    <img src="assets/products/dress-rose-long-sleeve/2.webp" alt="پیراهن آستین بلند طرح رز">
                 </div>
                 
             </div>
@@ -2131,17 +2260,16 @@
         </div>
 
         <div class="product-info">
-            <h1>تیشرت بندی تابستانی</h1>
-            <div class="product-description">تیشرت بندی سبک و خنک، مناسب فصل تابستان و ست کردن زیر شومیز یا ژاکت.</div>
+            <h1>پیراهن آستین بلند طرح رز</h1>
+            <div class="product-description">پیراهن آستین بلند با طرح رز ظریف، مناسب مهمانی‌های غیررسمی و مراسم عصرانه، با پارچه‌ای که به‌خوبی روی بدن می‌نشیند.</div>
             
             <div class="price">
                 
-                    <span class="old-price">129,000 تومان</span>
-                    <span class="discount-price">99,000 تومان</span>
+                    459,000 تومان
                 
             </div>
 
-            <div class="variant-section">
+            <div class="variant-section" id="variantSection">
                 <div class="variant-label">
                     <span>🎨</span> انتخاب رنگ
                 </div>
@@ -2150,23 +2278,23 @@
                     <button type="button" 
                             class="variant-btn color-btn"
                             data-type="color" 
-                            data-id="3"
-                            data-name="کرم"
-                            data-hex="#e9dfca"
-                            style="--color-hex: #e9dfca;"
-                            title="کرم">
-                        کرم
+                            data-id="1"
+                            data-name="مشکی"
+                            data-hex="#111111"
+                            style="--color-hex: #111111;"
+                            title="مشکی">
+                        مشکی
                     </button>
                     
                     <button type="button" 
                             class="variant-btn color-btn"
                             data-type="color" 
-                            data-id="5"
-                            data-name="طلایی روشن"
-                            data-hex="#B88A44"
-                            style="--color-hex: #B88A44;"
-                            title="طلایی روشن">
-                        طلایی روشن
+                            data-id="2"
+                            data-name="شرابی"
+                            data-hex="#7a2e3a"
+                            style="--color-hex: #7a2e3a;"
+                            title="شرابی">
+                        شرابی
                     </button>
                     
                 </div>
@@ -2208,14 +2336,6 @@
                             data-id="4"
                             data-name="XL">
                         XL
-                    </button>
-                    
-                    <button type="button" 
-                            class="variant-btn" 
-                            data-type="size" 
-                            data-id="5"
-                            data-name="XXL">
-                        XXL
                     </button>
                     
                 </div>
@@ -2905,7 +3025,7 @@
     const shareModalClose = document.getElementById('shareModalClose');
     const shareToast = document.getElementById('shareToast');
 
-    const productName = "تیشرت بندی تابستانی";
+    const productName = "پیراهن آستین بلند طرح رز";
     const productUrl = window.location.href;
     const shareText = 'این محصول رو از برازنده ببین: ' + productName;
 
@@ -3941,45 +4061,14 @@
 
     <!-- هدر پایین ثابت (منو) -->
     <nav class="bottom-nav">
-        <div class="nav-items">
-            <div class="nav-indicator" id="navIndicator" aria-hidden="true"></div>
-            <a href="index.html" class="nav-item ">
-                <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2h-5v-7H9v7H4a2 2 0 0 1-2-2z"/>
-                </svg>
-                <span class="nav-label">خانه</span>
-            </a>
-            <a href="products.html" class="nav-item ">
-                <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                    <line x1="16" y1="3" x2="16" y2="7"></line>
-                    <line x1="8" y1="3" x2="8" y2="7"></line>
-                </svg>
-                <span class="nav-label">دسته‌ها</span>
-            </a>
-            <a href="blog.html" class="nav-item ">
-                <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
-                    <line x1="8" y1="10" x2="16" y2="10"></line>
-                </svg>
-                <span class="nav-label">مقالات</span>
-            </a>
-            <a href="cart.html" class="nav-item ">
-                <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                </svg>
-                <span class="nav-label">سبد</span>
-            </a>
-            <a href="profile.html" class="nav-item ">
-                
-                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&amp;fit=crop&amp;w=300&amp;h=300&amp;q=80" 
-                         alt="پروفایل" 
-                         style="width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(184,138,68,0.14);">
-                
-                <span class="nav-label">پروفایل</span>
-            </a>
+        <div class="cart-bar" id="productCartBar">
+            <div class="cart-bar-price" id="cartBarPrice">
+                <span class="cart-bar-price-value">459,000 تومان</span>
+            </div>
+            <button type="button" class="cart-bar-btn" id="cartBarBtn" onclick="document.getElementById('variantSection').scrollIntoView({behavior:'smooth', block:'center'});">
+                <span class="cart-bar-btn-icon">🛒</span>
+                <span class="cart-bar-btn-text">افزودن به سبد خرید</span>
+            </button>
         </div>
     </nav>
 

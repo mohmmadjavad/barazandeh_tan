@@ -133,6 +133,42 @@
         }
 
         /* جستجو — جزیره‌ی دوم */
+        .header-back-btn {
+            background: rgba(255,255,255,0.62);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.7);
+            box-shadow: 0 6px 24px rgba(17,17,17,0.07);
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #111111;
+            flex-shrink: 0;
+        }
+
+        .header-back-btn:hover {
+            background: rgba(255,255,255,0.75);
+        }
+
+        .header-back-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* جستجو — جزیره‌ی دوم */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        /* جستجو — جزیره‌ی دوم */
         .search-form {
             flex: 1;
             max-width: 420px;
@@ -458,6 +494,18 @@
             }
             
             /* کادر جستجو در موبایل */
+            /* دکمه بازگشت در موبایل */
+            .header-back-btn {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .header-back-btn svg {
+                width: 16px;
+                height: 16px;
+            }
+            
+            /* کادر جستجو در موبایل */
             .search-form {
                 position: absolute;
                 left: 0;
@@ -529,6 +577,16 @@
             .search-wrapper button svg {
                 width: 18px;
                 height: 18px;
+            }
+            
+            .header-back-btn {
+                width: 54px;
+                height: 54px;
+            }
+            
+            .header-back-btn svg {
+                width: 24px;
+                height: 24px;
             }
             
             .bottom-nav {
@@ -1181,34 +1239,44 @@ select.p-input{cursor:pointer;}
                     <div class="brand-name">براز<span>نده</span></div>
                 </a>
                 
-                <!-- فرم جستجو -->
-                <form class="search-form header-island" method="get" action="products.html" id="searchForm">
-                    <div class="search-wrapper">
-                        <input type="text" 
-                               name="name" 
-                               placeholder="جستجوی محصول..." 
-                               autocomplete="off" 
-                               value=""
-                               id="searchInput">
-                        <button type="submit" aria-label="جستجو">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                        </button>
-                    </div>
-                </form>
-                
-                <!-- دکمه جستجو برای موبایل -->
-                <button class="mobile-search-toggle" id="mobileSearchToggle" aria-label="جستجو">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </button>
-                
-                <!-- دکمه بستن جستجو -->
-                <button class="close-search-btn" id="closeSearchBtn" aria-label="بستن جستجو">✕</button>
+                <!-- گروه سمت چپ هدر: جستجو و دکمه بازگشت، چسبیده به هم -->
+                <div class="header-actions">
+                    <!-- فرم جستجو -->
+                    <form class="search-form header-island" method="get" action="products.html" id="searchForm">
+                        <div class="search-wrapper">
+                            <input type="text" 
+                                   name="name" 
+                                   placeholder="جستجوی محصول..." 
+                                   autocomplete="off" 
+                                   value=""
+                                   id="searchInput">
+                            <button type="submit" aria-label="جستجو">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- دکمه جستجو برای موبایل -->
+                    <button class="mobile-search-toggle" id="mobileSearchToggle" aria-label="جستجو">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                    
+                    <!-- دکمه بستن جستجو -->
+                    <button class="close-search-btn" id="closeSearchBtn" aria-label="بستن جستجو">✕</button>
+
+                    <!-- دکمه بازگشت به صفحه قبل -->
+                    <button type="button" class="header-back-btn" id="headerBackBtn" onclick="history.back()" aria-label="بازگشت به صفحه قبل" title="بازگشت به صفحه قبل">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -1627,14 +1695,14 @@ select.p-input{cursor:pointer;}
             <a href="javascript:void(0)" class="p-wl-rm" onclick="return confirm('حذف شود؟')">
                 <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </a>
-            <a href="product-16.html">
+            <a href="product-6.html">
                 <div class="p-wl-imgw">
                     <img src="https://images.unsplash.com/photo-1571423483570-eb27018d1ec0?auto=format&amp;fit=crop&amp;w=900&amp;h=900&amp;q=80" alt="دامن میدی پلیسه" loading="lazy">
                     
                 </div>
             </a>
             <div class="p-wl-info">
-                <a href="product-16.html" style="text-decoration:none;">
+                <a href="product-6.html" style="text-decoration:none;">
                     <div class="p-wl-name">دامن میدی پلیسه</div>
                     <div class="p-wl-price">279,000 <span style="font-size:10px;font-weight:400;color:rgba(17,17,17,0.22);">تومان</span></div>
                 </a>
@@ -1649,14 +1717,14 @@ select.p-input{cursor:pointer;}
             <a href="javascript:void(0)" class="p-wl-rm" onclick="return confirm('حذف شود؟')">
                 <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </a>
-            <a href="product-19.html">
+            <a href="product-11.html">
                 <div class="p-wl-imgw">
                     <img src="https://images.unsplash.com/photo-1582142306909-195724d33ffc?auto=format&amp;fit=crop&amp;w=900&amp;h=900&amp;q=80" alt="دامن بلند طرح‌دار" loading="lazy">
                     <span class="p-wl-disc">13٪</span>
                 </div>
             </a>
             <div class="p-wl-info">
-                <a href="product-19.html" style="text-decoration:none;">
+                <a href="product-11.html" style="text-decoration:none;">
                     <div class="p-wl-name">دامن بلند طرح‌دار</div>
                     <div class="p-wl-price"><span class="p-wl-old">299,000</span>259,000 <span style="font-size:10px;font-weight:400;color:rgba(17,17,17,0.22);">تومان</span></div>
                 </a>
